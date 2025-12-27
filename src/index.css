@@ -1,0 +1,93 @@
+/* =====================================================
+   GLOBAL SETTINGS
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=Poppins:wght@100;400;600;800;900&family=Roboto:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+:root {
+    --prim-color: #88C273;
+    --white-color: #fff;
+    --black-color: #000;
+    --light-color: #111;
+    --poppins: "Poppins";
+
+    /* transitions */
+    --transition-fast: .3s;
+    --transition-medium: .45s;
+    --transition-slow: .6s;
+}
+
+/* ==========================
+   BODY E OFFSET HEADER
+   ========================== */
+body {
+    overflow-x: hidden !important;
+    background-color: var(--black-color) !important;
+    color: var(--white-color);
+    padding-top: 60px; /* header fixo */
+}
+
+@media (max-width: 900px) {
+    body {
+        padding-top: 50px;
+    }
+}
+
+/* ==========================
+   GLOBAL ANIMATIONS
+   ========================== */
+@keyframes Anim-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes anim-opacity {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ==========================
+   TITLES
+   ========================== */
+.section-title h5 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.section-title h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.section-title h1 span {
+    font-weight: 600;
+    background: linear-gradient(90deg, #88C273 0%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: text-shadow 1s ease-in-out, background-position 1s ease-in-out;
+    animation: neon-pulse 4s ease-in-out infinite alternate;
+}
+
+.section-title:hover h1 span {
+    text-shadow: 0 0 2px #88C273, 0 0 4px #00d5ff70;
+    background-position: right center;
+}
+
+@keyframes neon-pulse {
+    0% { text-shadow: 0 0 1px #88C273, 0 0 2px #00d5ff70; }
+    50% { text-shadow: 0 0 2px #88C273, 0 0 3px #00d5ff70; }
+    100% { text-shadow: 0 0 1.5px #88C273, 0 0 2.5px #00d5ff70; }
+}

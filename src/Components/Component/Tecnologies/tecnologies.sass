@@ -1,0 +1,199 @@
+@use "../../../style/variables" as *
+
+// ===============================
+// TECNOLOGIAS — NEON FUTURISTA FINAL
+// ===============================
+
+.technologies-container
+  margin: 4rem 0
+  margin-top: 6rem    // ajustado para top maior
+  text-align: center
+  position: relative
+  z-index: 1
+  overflow: hidden
+  padding-left: 2rem
+  padding-right: 2rem
+  margin-bottom: 2rem
+
+.technologies-cards-wrapper
+  position: relative
+  padding-bottom: 2rem
+  overflow: visible
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+  gap: 1rem
+  justify-items: center
+  padding-left: 2rem
+  padding-right: 2rem
+  margin-top: 3rem
+
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    z-index: -2
+    background-image: url('../../../assets/samacaca.png')
+    background-size: cover
+    background-position: center top
+    opacity: 0.12
+    filter: brightness(0.5) saturate(1.3)
+
+  &::after
+    content: ""
+    position: absolute
+    inset: 0
+    z-index: -1
+    background: radial-gradient(circle at 50% 70%, rgba(0,225,255,0.12) 0%, transparent 65%), radial-gradient(circle at 20% 20%, rgba(255,0,255,0.10) 0%, transparent 60%)
+    filter: blur(45px)
+    opacity: 0.45
+
+.technologies-title
+  font-size: 3rem
+  font-weight: 900
+  color: $color-white
+  text-shadow: 0 0 12px rgba(255,255,255,0.25)
+  margin-bottom: 2.5rem
+
+// ======================================
+// CARD BASE (GPU + ACCESSIBILITY SAFE)
+// ======================================
+.technology-card
+  position: relative
+  border-radius: $border-radius-card
+  padding: 1.25rem
+  background: $card-bg
+  backdrop-filter: blur(8px)
+  box-shadow: $shadow-soft
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: flex-start
+  gap: 0.6rem
+  color: $text-primary
+  cursor: pointer
+  overflow: hidden
+  min-height: 260px
+  width: 100%
+  max-width: 260px
+
+  // GPU OPTIMIZATION
+  will-change: transform, box-shadow
+  transform: translateZ(0)
+  transition: transform $transition-fast ease, box-shadow $transition-fast ease, background $transition-fast ease, border-color $transition-fast ease
+
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    background: radial-gradient(circle at 40% 30%, rgba(255,255,255,0.05), transparent 70%)
+    opacity: 0.4
+    z-index: 0
+    pointer-events: none
+
+  &:focus-visible
+    outline: none
+    border: 2px solid $neon
+    box-shadow: 0 0 0 3px rgba($neon, 0.35), 0 0 25px rgba($neon, 0.45)
+
+  .technology-icon
+    font-size: 4.6rem
+    z-index: 2
+    transition: transform $transition-fast ease, text-shadow $transition-fast ease
+    transform: translateZ(0)
+
+  .technology-info
+    position: relative
+    z-index: 2
+    text-align: center
+    flex: 1
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    h3
+      font-size: 1.1rem
+      font-weight: 800
+      color: $color-white
+      margin: 0.35rem 0
+
+    p
+      font-size: 0.95rem
+      color: $text-secondary
+      margin: 0
+
+// ======================================
+// HOVER — SOMENTE ONDE EXISTE MOUSE
+// ======================================
+@media (hover: hover) and (pointer: fine)
+  .technology-card:hover
+    transform: translateY(-8px) scale(1.05)
+    box-shadow: 0 0 25px rgba($neon, 0.55)
+    border: 1px solid $neon
+    background: linear-gradient(180deg, $surface-hover 0%, $card-bg 100%)
+
+    .technology-icon
+      transform: scale(1.12)
+      text-shadow: 0 0 18px rgba($neon, 0.75)
+
+// ======================================
+// CORES INDIVIDUAIS
+// ======================================
+.technology-card.html .technology-icon
+  color: #ff5722
+
+.technology-card.css .technology-icon
+  color: #2196f3
+
+.technology-card.js .technology-icon
+  color: #f7df1e
+
+.technology-card.php .technology-icon
+  color: #777bb4
+
+.technology-card.node .technology-icon
+  color: #3c873a
+
+.technology-card.mysql .technology-icon
+  color: #00758f
+
+.technology-card.react .technology-icon
+  color: #61dafb
+
+.technology-card.laravel .technology-icon
+  color: #f55247
+
+// ======================================
+// REDUCED MOTION ♿
+@media (prefers-reduced-motion: reduce)
+  .technology-card,
+  .technology-icon
+    transition: none
+    transform: none
+
+// ======================================
+// RESPONSIVIDADE
+@media (max-width: 1200px)
+  .technologies-cards-wrapper
+    padding-left: 1.5rem
+    padding-right: 1.5rem
+
+@media (max-width: 768px)
+  .technologies-title
+    font-size: 2.3rem
+
+  .technology-card
+    padding: 1rem
+    max-width: 220px
+    min-height: 240px
+
+@media (max-width: 480px)
+  .technologies-title
+    font-size: 1.7rem
+
+  .technology-card
+    padding: 0.75rem
+    max-width: 180px
+    min-height: 200px
+
+    .technology-icon
+      font-size: 3.4rem

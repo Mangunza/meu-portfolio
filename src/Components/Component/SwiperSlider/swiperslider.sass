@@ -1,0 +1,166 @@
+@use "./../../../style/variables"
+@use "./../../../style/mixins"
+
+/* ============================
+   TESTIMONIAL SLIDER - CINEMATIC
+   ============================ */
+
+.testimonial-slider
+  width: 100%
+  display: flex
+  justify-content: center
+  padding-top: 1.5rem
+  overflow: visible
+  background: #0a0a0a  // fundo geral super escuro
+
+/* ============================
+   CARD
+   ============================ */
+
+.testimonial-card
+  position: relative
+  max-width: 720px
+  margin: 0 auto
+  padding: 3.2rem clamp(1.5rem, 5vw, 4rem) 2.8rem
+  background: rgba(0, 0, 0, 0.97) // super preto
+  backdrop-filter: blur(20px)
+  -webkit-backdrop-filter: blur(20px)
+  border-radius: 26px
+  border: 1px solid rgba(136,194,115,0.15)
+  box-shadow: 0 25px 70px rgba(0,0,0,0.75)
+  text-align: center
+  transition: transform 0.6s ease, box-shadow 0.6s ease, background 0.3s ease
+
+  /* Linha decorativa premium no topo */
+  &::before
+    content: ""
+    position: absolute
+    top: 1rem
+    left: 50%
+    transform: translateX(-50%)
+    width: 64px
+    height: 3px
+    border-radius: 2px
+    background: linear-gradient(90deg, transparent, rgba(136,194,115,0.85), transparent)
+
+  &:hover
+    transform: translateY(-6px)
+    box-shadow: 0 35px 90px rgba(0,0,0,0.85), 0 0 25px rgba(136,194,115,0.45)
+    background: rgba(0, 0, 0, 0.98) // hover ainda mais escuro
+
+/* ============================
+   RATING
+   ============================ */
+
+.testimonial-card .rating
+  margin-top: 0.8rem
+  margin-bottom: 1.4rem
+  color: #88c273
+  font-size: 1.1rem
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 0.4rem
+
+  span
+    margin-left: 0.4rem
+    font-size: 0.95rem
+    color: rgba(255,255,255,0.85)
+
+.stars-white
+  display: flex
+  gap: 0.35rem
+
+.star
+  font-size: 1.25rem
+  color: rgba(255,255,255,0.25)
+  transition: color 0.35s ease, text-shadow 0.35s ease
+
+.stars-5 .star.active
+  color: #88c273
+.stars-4 .star.active
+  color: #f5c77a
+.stars-3 .star.active
+  color: #ff9f43
+.stars-2 .star.active
+  color: #ff6b6b
+.stars-1 .star.active
+  color: #ff4757
+
+/* ============================
+   TEXT
+   ============================ */
+
+.testimonial-card h4
+  font-size: 1.35rem
+  font-weight: 600
+  margin-bottom: 1rem
+  color: #ffffff
+
+.testimonial-card p
+  font-size: 1rem
+  line-height: 1.75
+  color: rgba(255,255,255,0.85)
+  margin-bottom: 2.2rem
+
+/* ============================
+   AUTHOR / FOOTER
+   ============================ */
+
+.testimonial-card footer
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 1rem
+
+.testimonial-avatar
+  width: clamp(60px, 10%, 72px)
+  height: clamp(60px, 10%, 72px)
+  border-radius: 50%
+  overflow: hidden
+  border: 2px solid rgba(136,194,115,0.6)
+  box-shadow: 0 0 20px rgba(136,194,115,0.45)
+  transition: transform 0.4s ease, box-shadow 0.4s ease
+
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    display: block
+
+.testimonial-card:hover .testimonial-avatar
+  transform: scale(1.08)
+  box-shadow: 0 0 28px rgba(136,194,115,0.6)
+
+.testimonial-card footer strong
+  display: block
+  font-size: 1rem
+  color: #ffffff
+
+.testimonial-card footer span
+  font-size: 0.85rem
+  color: rgba(255,255,255,0.65)
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px)
+  .testimonial-card
+    padding: 2.6rem 1.8rem 2.4rem
+
+  .testimonial-avatar
+    width: 60px
+    height: 60px
+
+@media (max-width: 480px)
+  .testimonial-card
+    padding: 2.2rem 1.2rem 2rem
+
+  .testimonial-avatar
+    width: 50px
+    height: 50px
+
+  .testimonial-card::before
+    width: 48px
+    height: 2px

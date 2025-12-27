@@ -1,0 +1,260 @@
+/* =========================================================
+   BLOG / PROJECT MODAL — LEGENDAS MANUAIS
+   📌 Cada bloco contém explicações de posições, tamanhos e efeitos
+   📌 Facilita ajustes manuais sem quebrar o layout
+ ========================================================= */
+
+/* =========================================================
+   OVERLAYS (FUNDO ESCURO)
+   🔹 .blog-modal-overlay → fundo do modal principal
+   🔹 .child-overlay → fundo do modal filho (descrição / timeline)
+   🔹 padding → distância do modal às bordas
+   🔹 z-index → garante sobreposição
+   🔹 overflow-y → permite scroll interno
+ ========================================================= */
+.blog-modal-overlay,
+.child-overlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.75)   // 0.85 = mais escuro | 0.7 = mais claro
+  display: flex
+  justify-content: center       // centraliza horizontal
+  align-items: center           // centraliza vertical
+  z-index: 1000
+  padding: 2rem
+  overflow-y: auto              // scroll se modal for alto
+
+/* =========================================================
+   MODAL PRINCIPAL / FILHO
+   🔹 .blog-modal → modal principal
+   🔹 &.small → modal filho ou compacto
+   🔹 max-width / padding / max-height controlam dimensões
+ ========================================================= */
+.blog-modal
+  background: #121212
+  color: #f5f5f5
+  border-radius: 1rem
+  max-width: 980px              // largura máxima
+  width: 100%                   // responsivo
+  max-height: calc(100vh - 4rem)
+  overflow: hidden
+  padding: 2.2rem
+  display: flex
+  flex-direction: column
+  position: relative
+  box-shadow: 0 0 40px rgba(0,0,0,0.7)
+
+  &.small
+    max-width: 680px            // modal filho ou versão compacta
+
+/* =========================================================
+   BOTÃO FECHAR (X)
+   🔹 top / right → posicionamento
+   🔹 &:after → símbolo ×
+ ========================================================= */
+.close-btn
+  position: absolute
+  top: 1rem
+  right: 1rem
+  background: none
+  border: none
+  cursor: pointer
+
+  &:after
+    content: "×"
+    font-size: 2.2rem
+    color: #fff
+
+/* =========================================================
+   STATUS DO PROJETO (BADGE)
+   🔹 top / left → posição
+   🔹 &.development / &.production → cores
+ ========================================================= */
+.project-status
+  position: absolute
+  top: 1rem
+  left: 1.5rem
+  padding: 0.4rem 0.7rem
+  border-radius: 0.5rem
+  font-size: 0.9rem
+  text-transform: uppercase
+
+  &.development
+    background: #2196f3
+
+  &.production
+    background: #88c273
+
+/* =========================================================
+   MEDIA CONTAINER (IMAGEM + VÍDEO) — LEGENDAS MANUAIS
+   📌 Envolve imagem principal e vídeo
+   📌 gap → distância entre elementos
+   📌 flex-shrink → evita encolher demais
+   📌 flex-wrap → empilha no mobile
+ ========================================================= */
+.modal-media-container
+  display: flex
+  gap: 1rem
+  margin-bottom: 1.5rem
+  flex-shrink: 0
+  flex-wrap: wrap               // permite empilhar no mobile
+
+/* =========================================================
+   IMAGEM REDONDA PRINCIPAL
+   🔹 border-radius: 50% → transforma em círculo
+   🔹 max-width / height → controla tamanho
+   🔹 object-fit → cobre o container
+   🔹 margin → centraliza horizontalmente
+ ========================================================= */
+.preview-image
+  width: 100%
+  max-width: 250px             // tamanho máximo do círculo
+  height: 250px                // garante proporção quadrada
+  object-fit: cover
+  border-radius: 50%           // deixa totalmente redonda
+  margin: 0 auto               // centraliza horizontalmente
+
+/* =========================================================
+   CONTAINER DO VÍDEO
+   🔹 flex: 1 → ocupa espaço restante
+   🔹 alinhamento central vertical e horizontal
+   🔹 min-height → altura mínima do container
+ ========================================================= */
+.media-right
+  flex: 1
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  min-height: 400px             // maior para acomodar vídeo ampliado
+  z-index: 1
+
+/* =========================================================
+   VÍDEO MAIOR
+   🔹 width / max-height → aumenta player
+   🔹 border-radius → cantos arredondados
+   🔹 object-fit → cobre o container
+   🔹 background → fallback preto
+ ========================================================= */
+.modal-video
+  width: 100%
+  max-height: 550px             // altura maior
+  border-radius: 0.8rem
+  object-fit: cover
+  background: #000
+
+/* =========================================================
+   BOTÃO PLAY
+   🔹 tamanho circular
+   🔹 borda verde
+   🔹 símbolo ▶ centralizado
+   🔹 hover → destaque
+ ========================================================= */
+.play-btn
+  width: 4.5rem
+  height: 4.5rem
+  border-radius: 50%
+  border: 2px solid #88c273
+  background: transparent
+  cursor: pointer
+
+  &:after
+    content: "▶"
+    color: #88c273
+    font-size: 1.6rem
+
+  &:hover
+    border-color: #6fa85f
+    background: rgba(111,168,95,0.25)
+    &:after
+      color: #6fa85f
+
+/* =========================================================
+   INFO / BOTÕES
+   🔹 .modal-info → título, tecnologias, botões
+   🔹 gap → espaçamento entre elementos
+ ========================================================= */
+.modal-info
+  display: flex
+  flex-direction: column
+  gap: 1.2rem
+  overflow: hidden
+
+.modal-info h2
+  font-size: 2.2rem
+  line-height: 1.25
+
+.technologies
+  font-size: 1.05rem
+  font-style: italic
+  color: #ccc
+
+.modal-buttons
+  display: flex
+  gap: 1rem
+
+  button
+    background: #88c273
+    color: #fff
+    border: none
+    padding: 0.9rem 1.8rem
+    border-radius: 0.5rem
+    cursor: pointer
+    font-weight: 600
+    font-size: 1rem
+    transition: all 0.2s ease
+
+    &:hover
+      background: #6fa85f
+
+/* =========================================================
+   MODAL FILHO (DESCRIÇÃO / TIMELINE)
+   🔹 .modal-content → scroll interno
+   🔹 line-height → legibilidade
+ ========================================================= */
+.modal-content
+  max-height: 65vh
+  overflow-y: auto
+  padding-top: 1rem
+  font-size: 1.05rem
+  line-height: 1.7
+
+.timeline-checklist
+  list-style: none
+  padding: 0
+
+.check-item
+  display: flex
+  align-items: center
+  gap: 0.8rem
+  margin-bottom: 0.6rem
+  font-weight: 500
+
+.check-icon
+  width: 1.1rem
+  height: 1.1rem
+  border-radius: 50%
+  background: #88c273
+
+/* =========================================================
+   RESPONSIVO
+   🔹 Ajustes mobile (<768px)
+   🔹 empilhar mídia, botão full width
+ ========================================================= */
+@media (max-width: 768px)
+  .modal-media-container
+    flex-direction: column
+
+  .preview-image
+    max-width: 100%
+    height: auto
+
+  .media-right
+    width: 100%
+    min-height: 300px
+    .modal-video
+      width: 100%
+      max-height: 400px
+
+  .modal-buttons
+    flex-direction: column

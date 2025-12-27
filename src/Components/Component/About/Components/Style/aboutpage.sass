@@ -1,0 +1,191 @@
+.about-page
+  background-color: #000
+  color: #fff
+  padding: 5rem 2rem
+  font-family: 'Inter', sans-serif
+
+/* ================= HERO ================= */
+.about-hero
+  position: relative
+  display: flex
+  justify-content: center
+  padding: 6rem 0 5rem
+  overflow: hidden
+
+  &::after
+    content: ""
+    position: absolute
+    inset: 0
+    background: radial-gradient(circle at top, rgba(136,194,115,0.1), transparent 65%)
+    pointer-events: none
+
+.hero-content
+  text-align: center
+  z-index: 1
+
+/* ===== AVATAR QUADRADO MAIOR ===== */
+.hero-avatar-wrapper
+  width: 240px
+  height: 240px
+  margin: 0 auto 2.2rem
+  padding: 8px
+  border-radius: 20px
+  background: linear-gradient(135deg, rgba(136,194,115,0.95), rgba(136,194,115,0.35), rgba(255,255,255,0.08))
+  box-shadow: 0 0 35px rgba(136,194,115,0.35), inset 0 0 30px rgba(0,0,0,0.85)
+  transition: transform 0.45s ease, box-shadow 0.45s ease
+
+  &:hover
+    transform: translateY(-6px) scale(1.04)
+    box-shadow: 0 0 50px rgba(136,194,115,0.45), inset 0 0 35px rgba(0,0,0,0.9)
+
+.hero-avatar
+  width: 100%
+  height: 100%
+  border-radius: 16px
+  object-fit: cover
+  object-position: center top
+  background-color: #000
+
+.hero-title
+  font-size: clamp(2.4rem, 5vw, 3.2rem)
+  font-weight: 800
+  margin-bottom: 0.5rem
+
+.hero-subtitle
+  font-size: 1.05rem
+  opacity: 0.85
+  letter-spacing: 0.6px
+
+/* ================= SECTION TITLE ================= */
+.section-title
+  font-size: 2.1rem
+  font-weight: 700
+  text-align: center
+  margin-bottom: 3rem
+
+  &::after
+    content: ""
+    display: block
+    width: 60px
+    height: 2px
+    margin: 1rem auto 0
+    background-color: #88C273
+
+/* ================= PILARES ================= */
+.about-pillars
+  max-width: 1100px
+  margin: 0 auto 6rem
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  gap: 2.5rem
+
+.pillar
+  background-color: #0c0c0c
+  border: 1px solid rgba(255,255,255,0.06)
+  border-radius: 16px
+  padding: 2.5rem
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25)
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    transform: translateY(-4px)
+    border-color: rgba(136,194,115,0.35)
+    box-shadow: 0 8px 30px rgba(136,194,115,0.15), 0 12px 40px rgba(0,0,0,0.3)
+
+  h3
+    color: #88C273
+    margin-bottom: 1rem
+
+  p
+    line-height: 1.7
+    opacity: 0.9
+
+/* ================= TIMELINE ================= */
+.about-timeline
+  max-width: 900px
+  margin: 0 auto 6rem
+
+.timeline
+  position: relative
+  padding-left: 2rem
+  display: flex
+  flex-direction: column
+  gap: 3rem
+
+  &::before
+    content: ""
+    position: absolute
+    left: 6px
+    top: 0
+    width: 2px
+    height: 100%
+    background: linear-gradient(to bottom, transparent, rgba(136,194,115,0.6), transparent)
+
+.timeline-item
+  display: flex
+  gap: 2rem
+  position: relative
+
+  &::before
+    content: ""
+    position: absolute
+    left: 0
+    top: 0.5rem
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    background: #88C273
+    box-shadow: 0 0 10px rgba(136,194,115,0.6)
+
+  &.is-current .timeline-content
+    border-color: rgba(136,194,115,0.6)
+    box-shadow: 0 0 15px rgba(136,194,115,0.3)
+
+.timeline-year
+  min-width: 70px
+  font-weight: 700
+  color: #88C273
+
+.timeline-content
+  background-color: #0c0c0c
+  border: 1px solid rgba(255,255,255,0.06)
+  border-radius: 14px
+  padding: 1.6rem 2rem
+  transition: border-color 0.3s ease, box-shadow 0.3s ease
+
+  h4
+    margin-bottom: 0.5rem
+
+  p
+    line-height: 1.7
+    opacity: 0.9
+
+/* ================= SKILLS ================= */
+.about-skills
+  max-width: 900px
+  margin: 0 auto
+
+.skills-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: 1.2rem
+
+  li
+    background-color: #0c0c0c
+    border: 1px solid rgba(255,255,255,0.08)
+    padding: 0.6rem 1.4rem
+    border-radius: 999px
+    font-size: 0.95rem
+    transition: all 0.3s ease, box-shadow 0.3s ease
+
+    &:hover
+      color: #88C273
+      border-color: #88C273
+      box-shadow: 0 0 12px rgba(136,194,115,0.3)
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 576px)
+  .hero-avatar-wrapper
+    width: 180px
+    height: 180px

@@ -1,0 +1,170 @@
+@use "./../../../../style/variables"
+@use "./../../../../style/mixins"
+
+/* ==================================================
+ INFO CARD – BASE
+ ================================================== */
+.info-card
+    @include mixins.flex-center
+    flex-direction: row
+    gap: 1rem
+    padding: 0.85rem 1.1rem
+    width: 100%
+    max-width: 380px
+    background: rgba(42,47,69,0.18)
+    border-radius: 0.9rem
+    backdrop-filter: blur(6px)
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease
+
+    &:hover
+        transform: translateY(-4px)
+        box-shadow: 0 10px 25px rgba(0,0,0,0.35)
+        background-color: rgba(58,63,99,0.55)
+
+    /* Texto */
+    .text
+        display: flex
+        flex-direction: column
+
+        h3
+            margin: 0
+            font-size: 0.85rem
+            font-weight: 600
+            color: #a0a5b9
+            letter-spacing: 0.4px
+
+        p
+            margin: 0
+            font-size: 0.95rem
+            color: #ffffff
+
+/* ==================================================
+ ICON WRAPPER
+ ================================================== */
+.icon-wrapper
+    position: relative
+    width: 40px
+    height: 40px
+    display: flex
+    justify-content: center
+    align-items: center
+
+    .icon
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        background: rgba(45,50,80,0.65)
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 1.3rem
+        color: #ffffff /* 👈 ÍCONE BRANCO INICIAL */
+        transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease
+        will-change: transform, color
+
+    .shadow
+        position: absolute
+        bottom: 2px
+        left: 50%
+        width: 18px
+        height: 5px
+        background: rgba(0,0,0,0.25)
+        border-radius: 50%
+        transform: translateX(-50%)
+        transition: transform 0.3s ease, opacity 0.3s ease
+
+    .glow
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        transform: translate(-50%, -50%) scale(0)
+        opacity: 0
+        pointer-events: none
+        transition: transform 0.3s ease, opacity 0.3s ease
+
+/* ==================================================
+ PIN (LOCALIZAÇÃO)
+ ================================================== */
+.info-card.pin-icon:hover
+    .icon
+        animation: pinFall 0.6s ease-out forwards, pinBounce 1.4s ease-in-out infinite 0.6s
+        color: #4285F4
+        box-shadow: 0 0 18px rgba(66,133,244,0.6)
+
+    .glow
+        background: rgba(66,133,244,0.2)
+        transform: translate(-50%, -50%) scale(1)
+        opacity: 0.35
+
+    .shadow
+        animation: shadowBounce 1.4s ease-in-out infinite 0.6s
+
+/* ==================================================
+ TELEFONE
+ ================================================== */
+.info-card.phone-icon:hover
+    .icon
+        animation: phoneRingUltra 1s linear infinite
+        color: #25D366
+        box-shadow: 0 0 18px rgba(37,211,102,0.7)
+
+/* ==================================================
+ EMAIL
+ ================================================== */
+.info-card.email-icon:hover
+    .icon
+        animation: emailSend 1.8s ease-out
+        color: #EA4335
+        box-shadow: 0 0 28px rgba(234,67,53,0.8)
+
+/* ==================================================
+ KEYFRAMES – PIN
+ ================================================== */
+@keyframes pinFall
+    0%
+        transform: translateY(-25px) scale(0.9)
+    100%
+        transform: translateY(0) scale(1)
+
+@keyframes pinBounce
+    0%, 100%
+        transform: translateY(0)
+    50%
+        transform: translateY(-5px)
+
+@keyframes shadowBounce
+    0%, 100%
+        transform: translateX(-50%) scaleX(1)
+        opacity: 0.25
+    50%
+        transform: translateX(-50%) scaleX(1.2)
+        opacity: 0.35
+
+/* ==================================================
+ KEYFRAMES – TELEFONE
+ ================================================== */
+@keyframes phoneRingUltra
+    0%
+        transform: rotate(0deg)
+    5%
+        transform: rotate(-15deg)
+    10%
+        transform: rotate(15deg)
+    15%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(0deg)
+
+/* ==================================================
+ KEYFRAMES – EMAIL
+ ================================================== */
+@keyframes emailSend
+    0%
+        opacity: 1
+        transform: translate(0,0)
+    100%
+        opacity: 0
+        transform: translate(-50px,-40px)

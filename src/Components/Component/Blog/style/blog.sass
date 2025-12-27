@@ -1,0 +1,211 @@
+// =====================================================
+// BLOG SECTION – SUPER PRETO + NEON GLASS
+// =====================================================
+.blog-section
+  padding: 5rem
+  background: #000                 // fundo super preto
+  backdrop-filter: blur(8px)       // leve efeito glass
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.85)
+  color: #fff
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .blog-header
+    text-align: center
+    margin-bottom: 3.5rem
+
+// =====================================================
+// BOTÃO PRINCIPAL
+// =====================================================
+.btn-1
+  display: flex
+  align-items: center
+  gap: 16px
+  margin-top: 20px
+
+  a
+    display: flex
+    align-items: center
+    gap: 12px
+    text-decoration: none
+    color: #fff
+    background-color: #1a1a1a
+    font-size: 1.15rem
+    font-weight: 600
+    padding: 14px 28px
+    border-radius: 50px
+    border: none
+    cursor: pointer
+    box-shadow: 0 0 6px rgba(0,0,0,0.3)
+    transition: all 0.5s ease-in-out
+
+    &:hover
+      background: linear-gradient(90deg, #88c273 0%, rgba(136,194,115,0.1) 100%)
+      box-shadow: 0 0 6px #88c273, 0 0 12px rgba(136,255,201,0.25), 0 0 24px rgba(136,255,201,0.15)
+      transform: scale(1.05)
+      color: #0f0f0f
+
+  img
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    padding: 10px
+    box-shadow: 0 0 6px rgba(0,0,0,0.3)
+    transition: all 0.5s ease-in-out
+
+    &:hover
+      transform: rotate(45deg) scale(1.08)
+      background: linear-gradient(90deg, #88c273 0%, rgba(136,194,115,0.8) 100%)
+      box-shadow: 0 0 6px #88c273, 0 0 12px rgba(136,255,201,0.25), 0 0 20px rgba(136,255,201,0.15)
+      filter: brightness(1.1)
+
+// =====================================================
+// RESPONSIVO BOTÃO
+// =====================================================
+@media (max-width: 768px)
+  .btn-1
+    flex-direction: column
+    gap: 12px
+
+    a
+      width: 100%
+      text-align: center
+      font-size: 1rem
+      padding: 12px 20px
+
+    img
+      width: 42px
+      height: 42px
+
+@media (max-width: 480px)
+  .btn-1
+    gap: 8px
+
+    img
+      width: 40px
+      height: 40px
+
+// =====================================================
+// FILTER BUTTONS
+// =====================================================
+.filter-buttons
+  display: flex
+  justify-content: center
+  gap: 1rem
+  margin-bottom: 3.5rem
+  flex-wrap: wrap
+
+  button
+    background: #1a1a1a
+    color: #fff
+    padding: 0.7rem 1.4rem
+    border-radius: 999px
+    border: none
+    cursor: pointer
+    font-size: 0.85rem
+    transition: all 0.35s cubic-bezier(.4,0,.2,1)
+
+    &:hover
+      background: rgba(136,194,115,0.15)
+
+    &.active
+      background: #88c273
+      color: #0f0f0f
+      box-shadow: 0 8px 25px #88c273
+      transform: translateY(-2px)
+
+// =====================================================
+// PROJECTS GRID
+// =====================================================
+.projects-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px))
+  justify-content: center
+  gap: clamp(2rem, 3vw, 3.5rem)
+  width: 100%
+  max-width: 1800px
+  margin: 0 auto
+
+// =====================================================
+// BLOG CARD
+// =====================================================
+.blog-card
+  background: linear-gradient(180deg, #1a1a1a, #111)
+  border-radius: 1rem
+  overflow: hidden
+  width: 100%
+  aspect-ratio: 1/1.1
+  display: flex
+  flex-direction: column
+  cursor: pointer
+  position: relative
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1)
+  opacity: 0
+  transform: translateY(12px)
+  animation: fadeUp 0.6s forwards
+
+  &:hover
+    transform: translateY(-8px)
+    box-shadow: 0 20px 45px #88c273
+
+  img
+    width: 100%
+    height: 65%
+    object-fit: cover
+    filter: saturate(1.05)
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1)
+
+    &:hover
+      transform: scale(1.04)
+
+  .blog-card-content
+    flex: 1
+    padding: 1rem
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    text-align: center
+
+    h3
+      font-size: clamp(1.1rem, 1.2vw, 1.35rem)
+      margin: 0.4rem 0
+      color: #fff
+
+    p
+      font-size: clamp(0.9rem, 0.95vw, 1rem)
+      color: #aaa
+      line-height: 1.45
+
+// =====================================================
+// VIEW MORE BUTTON
+// =====================================================
+.view-more-wrapper
+  text-align: center
+  margin-top: 2rem
+
+.view-more
+  background: #1a1a1a
+  color: #fff
+  padding: 0.85rem 2rem
+  font-size: 1rem
+  font-weight: 600
+  border-radius: 50px
+  border: none
+  cursor: pointer
+  transition: all 0.35s cubic-bezier(.4,0,.2,1)
+  box-shadow: 0 0 6px rgba(0,0,0,0.3)
+
+  &:hover
+    background: #88c273
+    color: #0f0f0f
+    box-shadow: 0 8px 25px #88c273
+    transform: translateY(-2px)
+
+// =====================================================
+// ANIMATIONS
+// =====================================================
+@keyframes fadeUp
+  to
+    opacity: 1
+    transform: translateY(0)
