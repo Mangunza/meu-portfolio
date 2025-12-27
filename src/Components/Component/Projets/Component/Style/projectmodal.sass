@@ -1,0 +1,227 @@
+@use "./../../../../../style/variables"
+@use "./../../../../../style/mixins"
+
+.project-modal-overlay,
+.child-overlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.85)
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 2rem
+  z-index: 1000
+  overflow-y: auto
+
+.project-modal,
+.child-modal
+  background: #121212
+  color: #f5f5f5
+  border-radius: 1.2rem
+  max-width: 1000px
+  width: 100%
+  max-height: calc(100vh - 4rem)
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  padding: 2rem
+  position: relative
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6)
+  transition: all 0.25s ease
+
+.child-modal.small
+  max-width: 680px
+
+.close-btn
+  position: absolute
+  top: 1rem
+  right: 1rem
+  background: none
+  border: none
+  cursor: pointer
+  z-index: 10
+  &::after
+    content: "×"
+    font-size: 2rem
+    color: #fff
+    transition: transform 0.2s ease
+  &:hover::after
+    transform: rotate(90deg)
+    color: #88C273
+
+.project-status
+  position: absolute
+  top: 1rem
+  left: 1.5rem
+  padding: 0.35rem 0.9rem
+  border-radius: 0.5rem
+  font-size: 0.85rem
+  font-weight: 600
+  text-transform: uppercase
+  &.em desenvolvimento
+    background: #88C273
+    color: #1b1b1b
+  &.em produção
+    background: #FF6B6B
+    color: #fff
+
+.coming-soon
+  text-align: center
+  font-size: 1.5rem
+  font-weight: 700
+  color: #88C273
+  padding: 3rem 1rem
+
+.modal-media-container
+  display: flex
+  gap: 1rem
+  margin-bottom: 1rem
+  flex-wrap: wrap
+
+.project-image
+  flex: 1 1 30%
+  max-height: 250px
+  width: 100%
+  border-radius: 1rem
+  object-fit: cover
+  filter: drop-shadow(0 0 8px rgba(136,194,115,0.3))
+
+.media-right
+  flex: 1 1 45%
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  min-height: 180px
+  z-index: 1
+
+.modal-video
+  width: 100%
+  max-height: 400px
+  border-radius: 1rem
+  object-fit: cover
+  background: #000
+
+.play-btn
+  width: 6rem
+  height: 6rem
+  border-radius: 50%
+  border: 3px solid #88C273
+  background: rgba(136,194,115,0.2)
+  cursor: pointer
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  opacity: 0
+  pointer-events: none
+  z-index: 2
+  transition: all 0.4s ease
+  &::after
+    content: "▶"
+    color: #88C273
+    font-size: 2rem
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: color 0.3s ease
+
+.media-right:hover .play-btn
+  opacity: 1
+  pointer-events: auto
+  animation: pulse 1.6s infinite
+  &::after
+    color: #000000c9
+
+@keyframes pulse
+  0%
+    transform: scale(1)
+    opacity: 0.7
+  50%
+    transform: scale(1.15)
+    opacity: 1
+  100%
+    transform: scale(1)
+    opacity: 0.7
+
+.modal-info
+  display: flex
+  flex-direction: column
+  gap: 1rem
+  text-align: center
+
+.technologies
+  font-size: 0.9rem
+  font-style: italic
+  color: #ccc
+
+.modal-buttons
+  display: flex
+  gap: 1rem
+  justify-content: center
+  margin-top: 1rem
+  flex-wrap: wrap
+  button
+    background: linear-gradient(135deg,#88C273,#6FA85F)
+    color: #fff
+    border: none
+    padding: 0.75rem 2rem
+    border-radius: 0.8rem
+    cursor: pointer
+    font-weight: 700
+    font-size: 1rem
+    overflow: hidden
+    z-index: 1
+    box-shadow: 0 6px 15px rgba(136,194,115,0.3)
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1)
+    &:hover
+      transform: translateY(-2px)
+      box-shadow: 0 8px 22px rgba(136,194,115,0.5)
+      background: linear-gradient(135deg,#6FA85F,#88C273)
+    &:active
+      transform: translateY(0)
+      box-shadow: 0 6px 15px rgba(136,194,115,0.3)
+
+.modal-content
+  max-height: 65vh
+  overflow-y: auto
+  padding-top: 1rem
+  font-size: 1rem
+  line-height: 1.6
+
+.timeline-vertical
+  list-style: none
+  padding: 0
+  display: flex
+  flex-direction: column
+  gap: 0.6rem
+
+.timeline-item
+  display: flex
+  align-items: center
+  gap: 0.6rem
+  transition: all 0.2s ease
+  &.done .dot
+    background: #6fa85f
+
+.dot
+  width: 0.8rem
+  height: 0.8rem
+  border-radius: 50%
+  background: #88c273
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 768px)
+  .modal-media-container
+    flex-direction: column
+  .project-image
+    max-height: 200px
+  .media-right
+    min-height: 150px
+  .modal-buttons
+    flex-direction: column
+    gap: 0.8rem
+  .project-modal,
+  .child-modal
+    padding: 1rem

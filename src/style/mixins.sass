@@ -1,0 +1,56 @@
+@use "variables"
+
+/* =======================================================
+   MIXINS
+ ======================================================= */
+
+@mixin flex-center($direction: row, $justify: center, $align: center)
+  display: flex
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align
+
+@mixin transition($props...)
+  transition: $props $transition
+
+
+// Centralização flex
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+// Botões
+@mixin button
+    padding: 1rem 1.2rem
+    color: variables.$text-primary
+    background: variables.$gradient-main
+    border-radius: 3rem
+    text-decoration: none
+    transition: all variables.$transition-fast
+    box-shadow: variables.$shadow-soft
+
+    &:hover
+        background: variables.$gradient-hover
+        box-shadow: variables.$shadow-strong
+
+// Borda com gradiente
+@mixin gradient-border
+    position: relative
+
+    &::after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 40%
+        height: 3px
+        background: variables.$gradient-main
+        border-radius: 10px
+
+// Hover glow
+@mixin hover-glow($color1, $color2)
+    &:hover
+        transform: scale(1.08) translateY(-3px)
+        box-shadow: 0 0 18px $color1, 0 3px 12px $color2
+

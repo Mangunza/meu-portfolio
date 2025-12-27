@@ -1,0 +1,127 @@
+/* ================================
+ VARIABLES SASS
+ ================================ */
+
+// Fonts
+$font-primary: "Poppins", sans-serif
+$font-secondary: "Plus Jakarta Sans", sans-serif
+$font-display: "Ethnocentric", sans-serif // para o logo do footer
+
+// Colors
+$color-white: #ffffff
+$color-black: #000000
+$text-primary: #f2f2f2
+$text-secondary: #9b9b9b
+$text-accent: #00d4ff
+$color-light: #303E3C
+
+// Neon Colors - mestre style 😎
+$neon: #88C273 // cor principal neon
+$neon2: #aaffc9 // cor secundária neon suave
+
+// Backgrounds
+$body-bg: #18121f
+$surface-bg: #0e0b16
+$card-bg: #1b1625
+$surface-hover: #271c34
+
+// Borders
+$border-radius-base: 12px
+$border-radius-card: 8px
+$border-thin: 1px
+
+// Gradients
+$gradient-main: linear-gradient(90deg, #3b0a6b 0%, #1f2a44 50%, #00d4ff 100%)
+$gradient-hover: linear-gradient(90deg, #1f2a44 0%, #00d4ff 50%, #3b0a6b 100%)
+
+// Neon Gradients (opcional)
+$gradient-neon: linear-gradient(90deg, $neon 0%, $neon2 100%)
+$gradient-neon-hover: linear-gradient(90deg, $neon2 0%, $neon 100%)
+
+// Shadows
+$shadow-soft: 0 6px 15px rgba(0, 0, 0, 0.45)
+$shadow-strong: 0 8px 20px rgba(0, 0, 0, 0.65)
+
+// Transitions
+$transition-fast: 0.3s
+$transition-slow: 0.6s
+
+// ==================================================
+// COLORS & THEME
+// ==================================================
+$bg-dark: #0f0f0f
+$bg-light: #f9f9f9
+$card-dark: #171717
+$card-light: #ffffff
+$accent: #88c273
+$text-dark: #f5f5f5
+$text-light: #1a1a1a
+$skeleton: #2a2a2a
+$shadow: rgba(0,0,0,0.3)
+$radius: 18px
+$transition: all 0.4s ease
+
+// ==================================================
+// BREAKPOINTS
+// ==================================================
+$mobile-xs: 320px
+$mobile-sm: 480px
+$tablet: 768px
+$desktop: 1024px
+$desktop-lg: 1440px
+$desktop-xl: 2560px
+$desktop-5k: 5120px
+
+$bg-light: #f5f5f5
+$bg-dark: #0f0f0f
+$card-light: #ffffff
+$card-dark: #171717
+$text-light: #121212
+$text-dark: #f5f5f5
+$accent: #88c273
+$transition: 0.4s ease
+$border-radius: 18px
+
+
+/* =====================================================
+   VARIABLES — Design System (Marketplace)
+   🎨 Cores, tipografia, espaçamentos e motion
+ =====================================================*/
+
+/* =======================================================
+   VARIABLES — Design System
+ ======================================================= */
+
+/* 🎨 Colors */
+$bg-main: rgba(0, 0, 0, 0.95)
+$bg-card: #1a1a1a
+$bg-dark: #121212
+$text-main: #f5f5f5
+$text-muted: #cfcfcf
+$text-soft: #9a9a9a
+$accent: #88C273
+$accent-dark: #0d0d0d
+
+/* 📐 Layout */
+$section-max-width: 1800px
+$base-spacing: clamp(0.75rem, 1.2vw, 1.2rem)
+$grid-gap: clamp(2rem, 3vw, 3.5rem)
+$card-radius: 1rem
+
+/* 🧱 Card sizing */
+$card-min: 260px
+$card-max: 300px
+
+@use "sass:math";
+
+$card-ratio: math.div(1, 1.1)
+
+
+/* 🔤 Typography */
+$title-size: clamp(1.8rem, 4vw, 3rem)
+$card-title: clamp(1.1rem, 1.2vw, 1.35rem)
+$card-text: clamp(0.9rem, 0.95vw, 1rem)
+$text-small: 0.85rem
+
+/* 🎞 Motion */
+$transition: 0.35s cubic-bezier(.4,0,.2,1)
