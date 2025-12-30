@@ -1,0 +1,265 @@
+
+@use "./../../style/variables"
+@use "./../../style/mixins"
+
+#header
+  width: 100%
+  padding: 1.3rem 2rem
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 200
+  backdrop-filter: blur(22px)
+  background: rgba(10,10,15,0.45)
+  border-bottom: 1px solid rgba(255,255,255,0.04)
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35)
+  animation: breatheShadow 6s ease-in-out infinite
+
+  .container
+    max-width: 1300px
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  .logo
+    display: inline-grid
+    grid-template-columns: auto auto
+    align-items: center
+    gap: 0.3rem
+    font-size: 1.9rem
+    font-weight: 700
+    letter-spacing: 1px
+    color: variables.$color-white
+    position: relative
+    cursor: default
+    transition: 0.3s ease-in-out
+
+    span:first-child
+      color: variables.$neon
+      text-shadow: 0 0 8px rgba(136,194,115,0.55)
+      transition: 0.3s ease-in-out
+
+    span:last-child
+      background: variables.$gradient-neon
+      -webkit-background-clip: text
+      color: transparent
+      font-weight: 700
+      text-shadow: 0 0 12px rgba(136,194,115,0.45)
+      transition: 0.3s ease-in-out
+
+    &:hover
+      span:first-child
+        text-shadow: 0 0 14px rgba(136,194,115,0.85), 0 0 22px rgba(136,194,115,0.45)
+      span:last-child
+        text-shadow: 0 0 18px rgba(136,194,115,0.75), 0 0 25px rgba(136,194,115,0.35)
+
+    &::after
+      content: "JM tech"
+      position: absolute
+      top: 73%
+      left: 0
+      width: 100%
+      transform: scaleY(-1)
+      opacity: 0.15
+      filter: blur(2.5px)
+      pointer-events: none
+      will-change: transform
+      white-space: nowrap // <-- força não quebrar linha
+      text-align: left // <-- opcional, alinha com o texto original
+      animation: mirrorScroll 6s ease-in-out infinite alternate
+
+// ============================
+// NAV LINKS LIMPOS (SEM AZUL, SEM SOMBRAS)
+// ============================
+.nav-link
+  border: none
+  padding: 0.25rem 0
+  font-size: 1.06rem
+  font-weight: 500
+  color: #cfd3e6
+  cursor: pointer
+  font-family: 'Plus Jakarta Sans', sans-serif
+  position: relative
+  text-decoration: none
+  letter-spacing: .5px
+  transition: color 0.25s ease
+  text-shadow: none // johnnydurao1802@gmail.com
+
+  &:visited,
+  &:active
+    color: #cfd3e6
+    text-shadow: none
+
+  &::after
+    content: ""
+    position: absolute
+    left: 0
+    bottom: -4px
+    width: 0%
+    height: 3px
+    background: variables.$neon
+    border-radius: 6px
+    transition: width 0.3s ease
+
+  &:hover
+    color: variables.$neon
+    text-shadow: none // garante que não apareça sombra
+
+    &::after
+      width: 100%
+
+
+.nav-link.active
+  color: variables.$neon
+
+  &::after
+    width: 100%
+
+
+.hamburger
+  width: 34px
+  height: 25px
+  display: none
+  flex-direction: column
+  justify-content: space-between
+  cursor: pointer
+  z-index: 300
+
+  span
+    width: 100%
+    height: 3px
+    background: variables.$color-white
+    border-radius: 6px
+    transition: 0.45s cubic-bezier(.68,-0.55,.27,1.55)
+
+  &.active
+    span:nth-child(1)
+      transform: translateY(11px) rotate(45deg)
+    span:nth-child(2)
+      opacity: 0
+    span:nth-child(3)
+      transform: translateY(-11px) rotate(-45deg)
+
+
+.nav-menu
+  ul
+    display: flex
+    gap: 2.5rem
+
+  a
+    color: variables.$color-white
+    font-size: 1.06rem
+    letter-spacing: .5px
+    position: relative
+    padding-bottom: 5px
+    text-decoration: none
+    transition: .3s ease
+
+    &::after
+      content: ""
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 0%
+      height: 2px
+      background: variables.$gradient-neon-hover
+      transition: width .3s ease
+
+    &:hover
+      color: variables.$neon
+      text-shadow: 0 0 12px rgba(136,194,115,.7)
+
+    &:hover::after
+      width: 100%
+
+@media (max-width: 900px)
+  .hamburger
+    display: flex
+
+  .nav-menu
+    position: fixed
+    top: 0
+    right: -100%
+    width: 70%
+    max-width: 320px
+    height: 90vh
+    background: rgba(20,20,26,0.75)
+    backdrop-filter: blur(22px)
+    border-left: 1px solid rgba(255,255,255,0.05)
+    box-shadow: -6px 0 25px rgba(0,0,0,0.5)
+    padding: 6rem 2rem
+    border-radius: 25px 0 0 25px
+    transition: right .45s ease
+    z-index: 260
+
+    &.open
+      right: 0
+
+    ul
+      flex-direction: column
+      gap: 2.4rem
+
+      li
+        opacity: 0
+        transform: translateX(25px)
+        animation: stagger .45s forwards ease
+
+        &:nth-child(1)
+          animation-delay: .1s
+        &:nth-child(2)
+          animation-delay: .2s
+        &:nth-child(3)
+          animation-delay: .3s
+        &:nth-child(4)
+          animation-delay: .4s
+        &:nth-child(5)
+          animation-delay: .5s
+
+    .socials
+      margin-top: 3rem
+      display: flex
+      gap: 1.6rem
+
+      a
+        font-size: 1.9rem
+        color: variables.$neon
+        transition: color .3s ease, text-shadow .3s ease
+
+        &:hover
+          color: variables.$neon2
+          text-shadow: 0 0 12px rgba(170,255,201,.65)
+
+.overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,.55)
+  opacity: 0
+  pointer-events: none
+  transition: .3s ease
+  z-index: 150
+
+  &.active
+    opacity: 1
+    pointer-events: all
+
+
+@keyframes stagger
+  to
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes breatheShadow
+  0%, 100%
+    box-shadow: 0 3px 20px rgba(136,194,115,.15)
+  50%
+    box-shadow: 0 3px 35px rgba(136,194,115,.35)
+
+@keyframes mirrorScroll
+  0%
+    transform: translateY(0) scaleY(-1)
+  100%
+    transform: translateY(5px) scaleY(-1)

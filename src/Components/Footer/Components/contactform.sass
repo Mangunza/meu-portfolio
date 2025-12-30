@@ -1,0 +1,342 @@
+
+#footer
+  background: #111
+  color: #eee
+  padding: 4rem 2rem
+  font-family: 'Inter', sans-serif
+  position: relative
+
+.footer-inner
+  display: flex
+  flex-wrap: wrap
+  gap: 2rem
+  justify-content: space-between
+
+.footer-col
+  flex: 1 1 220px
+  min-width: 220px
+
+  h3
+    font-size: 1.3rem
+    margin-bottom: 1rem
+    color: #88C273
+
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+
+    li
+      display: flex
+      align-items: flex-start
+      gap: 1rem
+      margin-bottom: 1rem
+
+      .icon-wrapper
+        position: relative
+        width: 40px
+        height: 40px
+
+        .icon
+          font-size: 1.5rem
+          color: #88C273
+          position: relative
+          z-index: 2
+
+        .shadow, .glow
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          border-radius: 50%
+
+        .shadow
+          background: rgba(0,0,0,0.2)
+          transform: scale(1.1)
+
+        .glow
+          background: rgba(136,194,115,0.3)
+          filter: blur(6px)
+          z-index: 1
+
+      .text
+        h3
+          font-size: 1rem
+          margin: 0
+          color: #88C273
+        p
+          margin: 0
+          font-size: 0.9rem
+          color: #ccc
+
+.footer-links li
+  button.footer-link-btn
+    background: transparent
+    border: none
+    color: #eee
+    font-size: 1rem
+    cursor: pointer
+    text-align: left
+    padding: 0
+    transition: 0.3s
+    &:hover
+      color: #88C273
+      transform: translateX(5px)
+
+.footer-input, .footer-textarea
+  width: 100%
+  background: #111
+  border: 1px solid #444
+  border-radius: 12px
+  padding: 0.8rem
+  color: #eee
+  font-size: 0.95rem
+  transition: 0.3s, box-shadow 0.3s
+  box-shadow: 0 0 5px rgba(136,194,115,0.2)
+  &:focus
+    outline: none
+    border: 1px solid #88C273
+    box-shadow: 0 0 10px rgba(136,194,115,0.7)
+
+.footer-input.valid, .footer-textarea.valid
+  border-color: #88C273
+  box-shadow: 0 0 10px rgba(136,194,115,0.7)
+
+.footer-input.invalid, .footer-textarea.invalid
+  border-color: #e74c3c
+  box-shadow: 0 0 10px rgba(231,76,60,0.7)
+
+.input-feedback
+  font-size: 0.8rem
+  margin-top: 0.3rem
+  color: #e74c3c
+
+.input-feedback.valid
+  color: #88C273
+
+
+.button-glass
+  background: rgba(136,194,115,0.15)
+  border: 1px solid #88C273
+  color: #eee
+  padding: 0.85rem 1.6rem
+  border-radius: 20px
+  font-weight: 600
+  cursor: pointer
+  backdrop-filter: blur(10px)
+  position: relative
+  overflow: hidden
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 0.5rem
+  transition: all 0.35s ease-in-out, transform 0.25s ease
+  &:hover:not(:disabled)
+    background: transparent
+    color: #88C273
+    transform: scale(1.05)
+    box-shadow: 0 0 0 2px #88C273 inset, 0 0 12px rgba(136,194,115,0.6)
+  &:disabled
+    opacity: 0.6
+    cursor: not-allowed
+
+.button-glass .spinner
+  border: 2px solid #88C273
+  border-top: 2px solid transparent
+  border-radius: 50%
+  width: 20px
+  height: 20px
+  animation: spin 0.8s linear infinite
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@keyframes spin
+  0%
+    transform: translate(-50%, -50%) rotate(0deg)
+  100%
+    transform: translate(-50%, -50%) rotate(360deg)
+
+.social-icons
+  display: flex
+  gap: 1rem
+  a
+    color: #eee
+    font-size: 1.5rem
+    transition: 0.3s
+    &:hover
+      color: #88C273
+      transform: translateY(-3px)
+
+.footer-bottom
+  text-align: center
+  margin-top: 3rem
+  font-size: 0.85rem
+  color: #aaa
+  .jm-logo
+    font-weight: 700
+    color: #88C273
+    span
+      font-weight: 400
+      font-size: 0.9rem
+      color: #eee
+
+.modal-message
+  position: fixed
+  bottom: 2rem
+  left: 50%
+  transform: translateX(-50%) translateY(100px)
+  background: #222
+  color: #eee
+  padding: 1rem 2rem
+  border-radius: 12px
+  font-weight: 600
+  opacity: 0
+  pointer-events: none
+  transition: all 0.4s ease
+  z-index: 9999
+  &.active
+    transform: translateX(-50%) translateY(0)
+    opacity: 1
+    pointer-events: auto
+  &.success
+    border: 1px solid #88C273
+  &.error
+    border: 1px solid #e74c3c
+  &.warning
+    border: 1px solid #f1c40f
+
+.contact-form-container
+  max-width: 500px
+  margin: 0 auto 2rem
+  position: relative
+  width: 100%
+  padding: 0 1rem
+
+.contact-form
+  padding: 2rem
+  background: #222
+  border-radius: 12px
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4)
+  display: flex
+  flex-direction: column
+  gap: 1rem
+  transition: transform 0.2s
+  &:hover
+    transform: translateY(-2px)
+
+.form-group
+  display: flex
+  flex-direction: column
+  position: relative
+
+  input, textarea
+    padding: 0.85rem
+    border: 1px solid #444
+    border-radius: 12px
+    font-size: 1rem
+    color: #eee
+    background: #111
+    transition: border-color 0.2s, box-shadow 0.2s
+    &:focus
+      border-color: #88C273
+      box-shadow: 0 0 10px rgba(136,194,115,0.6)
+
+  input.invalid, textarea.invalid
+    border-color: #e74c3c
+    &:focus
+      box-shadow: 0 0 10px rgba(231,76,60,0.6)
+
+  & small
+    align-self: flex-end
+    font-size: 0.75rem
+    color: #aaa
+
+button
+  background: rgba(0,0,0,0.3)
+  color: white
+  font-weight: bold
+  border: none
+  border-radius: 12px
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: background 0.3s, transform 0.2s
+  &:hover:not(:disabled)
+    background: transparent
+    border: 1px solid #88C273
+    transform: scale(1.03)
+    color: #88C273
+  &:disabled
+    opacity: 0.6
+    cursor: not-allowed
+
+.spinner
+  border: 3px solid rgba(255,255,255,0.3)
+  border-top: 3px solid white
+  border-radius: 50%
+  width: 18px
+  height: 18px
+  animation: spin 0.8s linear infinite
+
+.success-message
+  color: #2ecc71
+  font-weight: bold
+  margin-top: 0.5rem
+  transition: opacity 0.3s
+
+.error-message
+  color: #e74c3c
+  font-weight: bold
+  margin-top: 0.5rem
+  transition: opacity 0.3s
+
+.feedback-msg
+  position: absolute
+  top: -40px
+  left: 50%
+  transform: translateX(-50%)
+  background: #88C273
+  color: white
+  padding: 0.5rem 1rem
+  border-radius: 6px
+  font-weight: bold
+  opacity: 0
+  animation: fadein 0.3s forwards, fadeout 0.3s 3.7s forwards
+
+.recaptcha-container
+  display: none
+
+.grecaptcha-badge
+  visibility: hidden !important
+  opacity: 0 !important
+  pointer-events: none !important
+
+@keyframes fadein
+  to
+    opacity: 1
+
+@keyframes fadeout
+  to
+    opacity: 0
+
+@media (max-width: 1024px)
+  .footer-inner
+    flex-direction: column
+    gap: 3rem
+  .contact-form-container
+    margin-bottom: 1.5rem
+
+@media (max-width: 600px)
+  #footer
+    padding: 3rem 1.5rem
+  .footer-col
+    min-width: 100%
+  .footer-links li button
+    font-size: 0.95rem
+  .contact-form-container
+    padding: 0 1rem

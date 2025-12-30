@@ -1,0 +1,142 @@
+@use './../../../../style/variables'
+@use './../../../../style/mixins'
+
+.blog-section
+  padding: clamp(2rem, 5vw, 4.5rem) 1.25rem
+  background: #000
+  color: #fff
+  display: flex
+  flex-direction: column
+  align-items: center
+  overflow: hidden
+
+.blog-header
+  max-width: 1100px
+  width: 100%
+  margin-bottom: clamp(2rem, 4vw, 3rem)
+
+.header-flex
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  gap: 1.5rem
+  flex-wrap: wrap
+
+.section-title
+  flex: 1
+  text-align: left
+
+  h5
+    font-size: 0.75rem
+    font-weight: 500
+    letter-spacing: 0.22em
+    text-transform: uppercase
+    opacity: 0.6
+    color: variables.$text-secondary
+
+  h1
+    font-size: clamp(2.2rem, 4.8vw, 3.1rem)
+    font-weight: 420
+    line-height: 1.12
+    letter-spacing: -0.015em
+    font-family: "Plus Jakarta Sans", sans-serif
+    margin: 0
+    display: flex
+    flex-direction: column
+
+    .line1,
+    .line2
+      display: block
+
+    .line2 span
+      color: variables.$neon
+      font-weight: 700
+
+  p
+    margin-top: 0.6rem
+    font-size: clamp(0.9rem, 2.2vw, 1.05rem)
+    line-height: 1.55
+    color: #aaa
+
+    strong
+      display: block
+      color: variables.$neon
+      font-weight: 600
+
+.btn-1
+  margin-top: 0.3rem
+
+  a
+    display: inline-flex
+    align-items: center
+    gap: 10px
+    padding: 10px 22px
+    font-size: 0.95rem
+    font-weight: 500
+    color: #fff
+    background: #151515
+    border-radius: 999px
+    text-decoration: none
+    transition: all 0.25s ease
+
+    &:hover
+      background: #88c273
+      color: #0f0f0f
+      transform: translateY(-2px)
+
+    img
+      width: 38px
+      height: 38px
+
+.filter-buttons
+  display: flex
+  gap: 0.75rem
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem)
+  justify-content: center
+  flex-wrap: wrap
+
+  button
+    background: #151515
+    color: #fff
+    padding: 0.45rem 1rem
+    font-size: 0.8rem
+    border-radius: 999px
+    border: none
+    cursor: pointer
+
+    &.active
+      background: #88c273
+      color: #0f0f0f
+
+.projects-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+  gap: 1.5rem
+  max-width: 1000px
+  width: 100%
+
+.projects-loader,
+.projects-error,
+.projects-empty
+  text-align: center
+  color: #aaa
+  padding: 2rem 0
+
+.spinner
+  width: 40px
+  height: 40px
+  margin: 0 auto 1rem
+  border-radius: 50%
+  border: 3px solid rgba(255,255,255,0.2)
+  border-top-color: #88c273
+  animation: spin 1s linear infinite
+
+@keyframes spin
+  to
+    transform: rotate(360deg)
+
+@media (max-width: 992px)
+  .header-flex
+    flex-direction: column
+    align-items: center
+    text-align: center

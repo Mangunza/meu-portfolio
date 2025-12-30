@@ -1,0 +1,133 @@
+@use "./../../../style/variables"
+@use "./../../../style/mixins"
+
+.about-section
+  width: 100%
+  padding: 5rem 2rem 4rem
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  color: variables.$color-white
+  overflow: hidden
+
+  .about-wrapper
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    gap: 2.5rem
+    max-width: 1200px
+    margin: 0 auto
+
+  .col-text
+    flex: 2 1 420px
+    max-width: 720px
+
+  .bio-paragraph
+    text-align: justify
+    margin-bottom: 1.3rem
+    line-height: 1.8
+    color: variables.$text-primary
+    font-family: variables.$font-primary
+    opacity: 0
+    transform: translateY(14px)
+    animation: paragraphFadeIn 0.7s ease forwards
+    animation-delay: var(--delay, 0s)
+
+@keyframes paragraphFadeIn
+  to
+    opacity: 1
+    transform: translateY(0)
+
+/* ================================
+   Info Icon + Tooltip
+ ================================ */
+.info-icon
+  position: relative
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  margin-left: 0.5rem
+  cursor: pointer
+  background: variables.$color-black
+  color: variables.$color-white
+  border-radius: 50%
+  width: 22px
+  height: 22px
+  font-size: 13px
+  transition: background variables.$transition-fast ease
+
+  &:hover,
+  &:focus
+    background: variables.$surface-hover
+
+  .tooltip
+    visibility: hidden
+    opacity: 0
+    max-width: 220px
+    background: variables.$surface-bg
+    color: variables.$text-primary
+    padding: 6px 12px
+    border-radius: variables.$border-radius-base
+    position: absolute
+    bottom: 130%
+    left: 50%
+    transform: translateX(-50%) translateY(6px)
+    font-size: 13px
+    box-shadow: variables.$shadow-soft
+    transition: opacity 0.25s ease, transform 0.25s ease
+
+.info-icon:hover .tooltip,
+.info-icon:focus .tooltip
+  visibility: visible
+  opacity: 1
+  transform: translateX(-50%) translateY(0)
+
+/* ================================
+   Modal Footer
+ ================================ */
+.modal-info-overlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.75)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 9999
+  padding: 1rem
+
+.modal-info-content
+  background: variables.$surface-bg
+  color: variables.$text-primary
+  padding: 2rem
+  border-radius: variables.$border-radius-base
+  max-width: 520px
+  width: 100%
+  box-shadow: variables.$shadow-strong
+  animation: fadeScaleIn 0.35s ease forwards
+  font-size: 0.95rem
+  line-height: 1.65
+  font-family: variables.$font-primary
+
+.modal-close-btn
+  margin-top: 1.5rem
+  padding: 0.6rem 1.3rem
+  background: variables.$neon
+  border: none
+  border-radius: variables.$border-radius-card
+  cursor: pointer
+  color: variables.$color-white
+  font-weight: 600
+  transition: background 0.25s ease
+
+  &:hover
+    background: variables.$neon2
+
+@keyframes fadeScaleIn
+  from
+    transform: scale(0.96)
+    opacity: 0
+  to
+    transform: scale(1)
+    opacity: 1

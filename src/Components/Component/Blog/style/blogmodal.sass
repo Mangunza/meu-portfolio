@@ -1,0 +1,291 @@
+.blog-modal-overlay,
+.child-overlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.75)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 1000
+  padding: clamp(1rem, 3vw, 2rem)
+  overflow-y: auto
+
+.blog-modal
+  background: #121212
+  color: #f5f5f5
+  border-radius: clamp(0.8rem, 1vw, 1.5rem)
+  max-width: clamp(320px, 80%, 980px)
+  width: 100%
+  max-height: calc(100vh - clamp(2rem, 3vw, 4rem))
+  overflow: hidden
+  padding: clamp(1.5rem, 3vw, 2.5rem)
+  display: flex
+  flex-direction: column
+  position: relative
+  box-shadow: 0 0 40px rgba(0,0,0,0.7)
+  transition: all 0.25s ease
+
+  &.small
+    max-width: clamp(300px, 60%, 680px)
+
+.close-btn
+  position: absolute
+  top: clamp(0.5rem, 1vw, 1.2rem)
+  right: clamp(0.5rem, 1vw, 1.2rem)
+  background: none
+  border: none
+  cursor: pointer
+  z-index: 10
+  &:after
+    content: "×"
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem)
+    color: #fff
+    transition: transform 0.2s ease
+  &:hover:after
+    transform: rotate(90deg)
+    color: #88C273
+
+.project-status
+  position: absolute
+  top: clamp(0.5rem, 1vw, 1rem)
+  left: clamp(1rem, 2vw, 2rem)
+  padding: clamp(0.3rem, 0.6vw, 0.7rem) clamp(0.6rem, 1vw, 0.9rem)
+  border-radius: clamp(0.3rem, 0.5vw, 0.5rem)
+  font-size: clamp(0.75rem, 1vw, 0.95rem)
+  text-transform: uppercase
+  font-weight: 600
+  &.development
+    background: #2196f3
+    color: #fff
+  &.production
+    background: #88c273
+    color: #fff
+
+.modal-media-container
+  display: flex
+  gap: clamp(0.5rem, 1vw, 1rem)
+  margin-bottom: clamp(1rem, 2vw, 1.5rem)
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+
+.preview-image
+  width: clamp(60px, 15vw, 250px)
+  height: clamp(60px, 15vw, 250px)
+  object-fit: cover
+  border-radius: 50%
+  margin: 0 auto
+  transition: all 0.25s ease
+
+.media-right
+  flex: 1 1 clamp(40%, 45%, 50%)
+  display: flex
+  align-items: center
+  justify-content: center
+  position: relative
+  min-height: clamp(150px, 25vh, 400px)
+  z-index: 1
+
+.modal-video
+  width: 100%
+  max-height: clamp(140px, 30vh, 550px)
+  border-radius: clamp(0.5rem, 1vw, 0.8rem)
+  object-fit: cover
+  background: #000
+  transition: all 0.25s ease
+
+.play-btn
+  width: clamp(2.5rem, 6vw, 4.5rem)
+  height: clamp(2.5rem, 6vw, 4.5rem)
+  border-radius: 50%
+  border: 2px solid #88c273
+  background: transparent
+  cursor: pointer
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 2
+  transition: all 0.3s ease
+  &::after
+    content: "▶"
+    color: #88c273
+    font-size: clamp(1rem, 2vw, 1.6rem)
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: color 0.3s ease
+
+.play-btn:hover
+  border-color: #6fa85f
+  background: rgba(111,168,95,0.25)
+  &::after
+    color: #6fa85f
+
+.modal-info
+  display: flex
+  flex-direction: column
+  gap: clamp(0.8rem, 1.5vw, 1.2rem)
+  overflow: visible
+
+.modal-info h2
+  font-size: clamp(1.5rem, 3vw, 2.2rem)
+  line-height: 1.25
+  font-weight: 700
+  text-align: center
+
+.technologies
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem)
+  font-style: italic
+  color: #ccc
+
+.modal-buttons
+  display: flex
+  gap: clamp(0.5rem, 1vw, 1rem)
+  flex-wrap: wrap
+  margin-top: auto
+  justify-content: center
+  button
+    background: linear-gradient(135deg,#88C273,#6FA85F)
+    color: #fff
+    border: none
+    padding: clamp(0.5rem, 1vw, 0.9rem) clamp(1rem, 2vw, 1.8rem)
+    border-radius: clamp(0.5rem, 0.5vw, 0.8rem)
+    cursor: pointer
+    font-weight: 600
+    font-size: clamp(0.85rem, 1vw, 1rem)
+    transition: all 0.3s ease
+    &:hover
+      background: linear-gradient(135deg,#6FA85F,#88C273)
+      transform: translateY(-2px)
+
+.modal-content
+  max-height: 60vh
+  overflow-y: auto
+  padding-top: clamp(0.5rem, 1vw, 1rem)
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem)
+  line-height: 1.7
+
+.timeline-checklist
+  list-style: none
+  padding: 0
+  display: flex
+  flex-direction: column
+  gap: clamp(0.5rem, 1vw, 0.8rem)
+  margin: clamp(0.5rem, 1vw, 1rem) auto
+  align-items: center
+  width: fit-content
+
+.check-item
+  display: flex
+  flex-direction: column
+  position: relative
+  padding-left: clamp(1.5rem, 3vw, 2rem)
+  gap: clamp(0.2rem, 0.5vw, 0.3rem)
+  width: 100% 
+
+.check-item::before
+  content: ""
+  position: absolute
+  left: clamp(0.8rem, 2vw, 0.9rem)
+  top: 0
+  width: clamp(0.15rem, 0.3vw, 0.2rem)
+  height: 100%
+  background: #555
+  border-radius: 2px
+
+.check-icon
+  width: clamp(1rem, 2vw, 1.2rem)
+  height: clamp(1rem, 2vw, 1.2rem)
+  border-radius: 50%
+  background: #88c273
+  display: flex
+  align-items: center
+  justify-content: center
+  color: #fff
+  font-size: clamp(0.7rem, 1vw, 0.8rem)
+  font-weight: bold
+  position: absolute
+  left: 0
+  top: 0
+  transform: translateY(0)
+  transition: all 0.3s ease
+
+.check-item.completed .check-icon
+  background: #6fa85f
+  content: "✔"
+
+.check-item.current .check-icon
+  background: #FFD166
+  color: #000
+  box-shadow: 0 0 8px #FFD166
+  animation: pulse 1.5s infinite
+
+.check-item .text
+  font-weight: 500
+  color: #f5f5f5
+  transition: color 0.3s ease
+
+.check-item.current .text
+  font-weight: 700
+  color: #FFD166
+
+.check-item .description
+  font-size: clamp(0.8rem, 1vw, 0.9rem)
+  color: #ccc
+  margin-left: clamp(0.1rem, 0.2vw, 0.2rem)
+  line-height: 1.4
+
+@keyframes pulse
+  0%
+    transform: scale(1)
+    opacity: 0.7
+  50%
+    transform: scale(1.15)
+    opacity: 1
+  100%
+    transform: scale(1)
+    opacity: 0.7
+
+@media (max-width: 1024px)
+  .preview-image
+    max-width: 120px
+    height: 120px
+
+  .modal-video
+    max-height: 250px
+
+  .play-btn
+    width: 3.5rem
+    height: 3.5rem
+    &::after
+      font-size: 1.2rem
+
+@media (max-width: 768px)
+  .preview-image
+    max-width: 60px
+    height: 60px
+
+  .modal-media-container
+    flex-direction: column
+
+  .media-right
+    width: 100%
+    min-height: 200px
+
+  .modal-video
+    max-height: 180px
+
+  .play-btn
+    width: 3rem
+    height: 3rem
+    &::after
+      font-size: 1rem
+
+  .modal-buttons
+    flex-direction: column
+    width: 100%
+    button
+      width: 100%
+      text-align: center

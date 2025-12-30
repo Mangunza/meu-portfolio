@@ -1,0 +1,142 @@
+@use "../../../style/variables"
+
+.technologies-container
+  position: relative
+  overflow: hidden
+  background: #000
+  color: variables.$color-white
+  padding: clamp(2rem, 4vw, 3.2rem) 0
+  text-align: center
+
+.technologies-header
+  max-width: 760px
+  margin: 0 auto
+  padding: clamp(1.6rem, 3vw, 2.2rem)
+  display: flex
+  flex-direction: column
+  gap: 0.9rem
+  text-align: center
+  background: rgba(0,0,0,0.95)
+  border-radius: 1.2rem
+  backdrop-filter: blur(16px)
+
+  h5
+    font-size: 0.75rem
+    font-weight: 500
+    letter-spacing: 0.22em
+    text-transform: uppercase
+    opacity: 0.6
+    margin-bottom: 0.4rem
+    color: variables.$text-secondary
+
+  h1
+    font-size: clamp(2.2rem, 4.8vw, 3.1rem)
+    font-weight: 420
+    line-height: 1.12
+    letter-spacing: -0.015em
+    font-family: "Plus Jakarta Sans", sans-serif
+    margin: 0
+
+    span
+      color: variables.$neon
+      font-weight: 700
+
+  p
+    max-width: 520px
+    margin: 0 auto
+    font-size: clamp(0.9rem, 2.2vw, 1rem)
+    font-weight: 400
+    line-height: 1.55
+    color: variables.$text-secondary
+
+.technology-card
+  position: relative
+  min-height: clamp(180px, 22vw, 210px)
+  padding: 0.9rem
+  border-radius: variables.$border-radius-card
+  background: variables.$card-bg
+  backdrop-filter: blur(8px)
+  box-shadow: variables.$shadow-soft
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 0.5rem
+
+  cursor: pointer
+  overflow: hidden
+  transition: transform variables.$transition-fast ease, box-shadow variables.$transition-fast ease
+
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    background: radial-gradient(circle at 40% 30%, rgba(255,255,255,0.05), transparent 70%)
+    opacity: 0.3
+    z-index: 0
+
+  .technology-icon
+    font-size: clamp(2.4rem, 5vw, 3.6rem)
+    z-index: 2
+    transition: transform variables.$transition-fast ease, text-shadow variables.$transition-fast ease
+
+  .technology-info
+    z-index: 2
+    text-align: center
+
+    h3
+      font-size: 0.95rem
+      font-weight: 600
+      margin: 0.25rem 0
+      color: variables.$color-white
+
+    p
+      font-size: 0.85rem
+      font-weight: 400
+      line-height: 1.45
+      color: variables.$text-secondary
+      margin: 0
+
+
+@media (hover: hover) and (pointer: fine)
+  .technology-card:hover
+    transform: translateY(-5px) scale(1.03)
+    box-shadow: 0 0 20px rgba(variables.$neon, 0.45)
+
+    .technology-icon
+      transform: scale(1.1)
+      text-shadow: 0 0 14px rgba(variables.$neon, 0.65)
+
+
+.technology-card.html .technology-icon
+  color: #ff5722
+.technology-card.css .technology-icon
+  color: #2196f3
+.technology-card.js .technology-icon
+  color: #f7df1e
+.technology-card.php .technology-icon
+  color: #777bb4
+.technology-card.node .technology-icon
+  color: #3c873a
+.technology-card.mysql .technology-icon
+  color: #00758f
+.technology-card.react .technology-icon
+  color: #61dafb
+.technology-card.laravel .technology-icon
+  color: #f55247
+
+@media (max-width: 480px)
+  .technologies-header
+    padding: 1.4rem 1.2rem
+    gap: 0.75rem
+
+    h1
+      font-size: 1.35rem
+
+    p
+      font-size: 0.88rem
+
+  .technology-card
+    min-height: 170px
+    padding: 0.75rem

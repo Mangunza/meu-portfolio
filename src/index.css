@@ -1,0 +1,49 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&family=Poppins:wght@100;400;600;800;900&family=Roboto:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+:root {
+    --prim-color: #88C273;
+    --white-color: #fff;
+    --black-color: #000;
+    --light-color: #111;
+    --poppins: "Poppins";
+
+    /* transitions */
+    --transition-fast: .3s;
+    --transition-medium: .45s;
+    --transition-slow: .6s;
+}
+
+body {
+    overflow-x: hidden !important;
+    background-color: var(--black-color) !important;
+    color: var(--white-color);
+    padding-top: 60px; /* header johnnydurao1802@gmail.com */
+}
+
+@media (max-width: 900px) {
+    body {
+        padding-top: 50px;
+    }
+}
+
+@keyframes Anim-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes anim-opacity {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
