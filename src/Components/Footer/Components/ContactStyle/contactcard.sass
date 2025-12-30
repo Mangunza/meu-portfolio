@@ -1,9 +1,7 @@
 @use "./../../../../style/variables"
 @use "./../../../../style/mixins"
 
-/* ==================================================
- INFO CARD – BASE
- ================================================== */
+
 .info-card
     @include mixins.flex-center
     flex-direction: row
@@ -38,9 +36,6 @@
             font-size: 0.95rem
             color: #ffffff
 
-/* ==================================================
- ICON WRAPPER
- ================================================== */
 .icon-wrapper
     position: relative
     width: 40px
@@ -85,9 +80,6 @@
         pointer-events: none
         transition: transform 0.3s ease, opacity 0.3s ease
 
-/* ==================================================
- PIN (LOCALIZAÇÃO)
- ================================================== */
 .info-card.pin-icon:hover
     .icon
         animation: pinFall 0.6s ease-out forwards, pinBounce 1.4s ease-in-out infinite 0.6s
@@ -102,27 +94,13 @@
     .shadow
         animation: shadowBounce 1.4s ease-in-out infinite 0.6s
 
-/* ==================================================
- TELEFONE
- ================================================== */
-.info-card.phone-icon:hover
-    .icon
-        animation: phoneRingUltra 1s linear infinite
-        color: #25D366
-        box-shadow: 0 0 18px rgba(37,211,102,0.7)
 
-/* ==================================================
- EMAIL
- ================================================== */
 .info-card.email-icon:hover
     .icon
         animation: emailSend 1.8s ease-out
         color: #EA4335
         box-shadow: 0 0 28px rgba(234,67,53,0.8)
 
-/* ==================================================
- KEYFRAMES – PIN
- ================================================== */
 @keyframes pinFall
     0%
         transform: translateY(-25px) scale(0.9)
@@ -143,24 +121,38 @@
         transform: translateX(-50%) scaleX(1.2)
         opacity: 0.35
 
-/* ==================================================
- KEYFRAMES – TELEFONE
- ================================================== */
-@keyframes phoneRingUltra
+.info-card.phone-icon:hover
+    .icon
+        animation: phoneRing 2.2s ease-in-out infinite
+        color: #25D366
+        box-shadow: 0 0 18px rgba(37,211,102,0.7)
+
+@keyframes phoneRing
     0%
         transform: rotate(0deg)
-    5%
-        transform: rotate(-15deg)
     10%
+        transform: rotate(-15deg)
+    20%
         transform: rotate(15deg)
-    15%
+    30%
+        transform: rotate(0deg)
+    40%
+        transform: rotate(-15deg)
+    50%
+        transform: rotate(15deg)
+    60%
+        transform: rotate(0deg)
+    70%
+        transform: rotate(-15deg)
+    80%
+        transform: rotate(15deg)
+    90%
         transform: rotate(0deg)
     100%
         transform: rotate(0deg)
 
-/* ==================================================
- KEYFRAMES – EMAIL
- ================================================== */
+
+
 @keyframes emailSend
     0%
         opacity: 1
@@ -168,3 +160,13 @@
     100%
         opacity: 0
         transform: translate(-50px,-40px)
+
+.sr-only
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0,0,0,0)
+  border: 0

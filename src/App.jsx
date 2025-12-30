@@ -9,7 +9,6 @@ import AboutPage from "./Components/Component/About/Components/AboutPage";
 import ProjectsPage from "./Components/Component/Projets/ProjectsPage";
 
 function App() {
-  // Aqui coloca o nome do repositório no GitHub Pages
   const basename = "/meu-portfolio";
 
   return (

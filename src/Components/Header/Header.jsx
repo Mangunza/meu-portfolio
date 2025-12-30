@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaLinkedin, FaGithub, FaDiscord } from "react-icons/fa";
-import { NavLink } from "react-router-dom"; // ✅ NavLink
+import { NavLink } from "react-router-dom";
 import "./header.sass";
 
 const Header = () => {
@@ -11,24 +11,21 @@ const Header = () => {
 
   return (
     <>
-      {/* OVERLAY */}
+      {/* johnnydurao1802@gmail.com */}
       <div className={`overlay ${open ? "active" : ""}`} onClick={close}></div>
 
       <header id="header">
         <div className="container">
-          {/* LOGO */}
           <div className="logo">
             JM <span>tech</span>
           </div>
 
-          {/* HAMBURGER */}
           <div className={`hamburger ${open ? "active" : ""}`} onClick={toggle}>
             <span></span>
             <span></span>
             <span></span>
           </div>
 
-          {/* NAV */}
           <nav className={`nav-menu ${open ? "open" : ""}`}>
             <ul>
               <li onClick={close}>
@@ -72,12 +69,11 @@ const Header = () => {
                     `nav-link ${isActive ? "active" : ""}`
                   }
                 >
-                  Contacto
+                  Contactos
                 </NavLink>
               </li>
             </ul>
 
-            {/* SOCIAL ICONS */}
             <div className="socials">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer">
                 <FaLinkedin />

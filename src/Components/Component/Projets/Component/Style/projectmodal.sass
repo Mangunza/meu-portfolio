@@ -9,53 +9,60 @@
   display: flex
   justify-content: center
   align-items: center
-  padding: 2rem
   z-index: 1000
+  padding: clamp(1rem, 5vw, 3rem)
   overflow-y: auto
 
 .project-modal,
 .child-modal
   background: #121212
   color: #f5f5f5
-  border-radius: 1.2rem
+  border-radius: clamp(0.8rem, 0.5vw, 1.5rem)
+  width: clamp(320px, 60%, 1000px)
   max-width: 1000px
-  width: 100%
-  max-height: calc(100vh - 4rem)
+  max-height: 80vh
   display: flex
   flex-direction: column
   overflow: hidden
-  padding: 2rem
+  padding: clamp(1rem, 2vw, 2rem)
   position: relative
   box-shadow: 0 8px 30px rgba(0,0,0,0.6)
-  transition: all 0.25s ease
+  transition: all 0.3s ease
 
 .child-modal.small
-  max-width: 680px
+  max-width: clamp(280px, 50%, 600px)
 
 .close-btn
   position: absolute
-  top: 1rem
-  right: 1rem
+  top: clamp(0.5rem, 1vw, 1.5rem)
+  right: clamp(0.5rem, 1vw, 1.5rem)
   background: none
   border: none
   cursor: pointer
   z-index: 10
   &::after
     content: "×"
-    font-size: 2rem
+    font-size: clamp(1.2rem, 2vw, 2rem)
     color: #fff
     transition: transform 0.2s ease
   &:hover::after
     transform: rotate(90deg)
     color: #88C273
 
+.project-modal h2,
+.child-modal h2
+  font-size: clamp(1.4rem, 2.5vw, 2rem)
+  font-weight: 700
+  text-align: center
+  margin-bottom: clamp(0.5rem, 1vw, 1rem)
+
 .project-status
   position: absolute
-  top: 1rem
-  left: 1.5rem
-  padding: 0.35rem 0.9rem
-  border-radius: 0.5rem
-  font-size: 0.85rem
+  top: clamp(0.5rem, 1vw, 1.5rem)
+  left: clamp(1rem, 2vw, 2rem)
+  padding: clamp(0.25rem, 0.5vw, 0.9rem) clamp(0.5rem, 1vw, 1rem)
+  border-radius: clamp(0.3rem, 0.5vw, 0.5rem)
+  font-size: clamp(0.7rem, 1vw, 0.85rem)
   font-weight: 600
   text-transform: uppercase
   &.em desenvolvimento
@@ -65,67 +72,61 @@
     background: #FF6B6B
     color: #fff
 
-.coming-soon
-  text-align: center
-  font-size: 1.5rem
-  font-weight: 700
-  color: #88C273
-  padding: 3rem 1rem
-
 .modal-media-container
   display: flex
-  gap: 1rem
-  margin-bottom: 1rem
-  flex-wrap: wrap
+  gap: clamp(0.5rem, 2vw, 1.5rem)
+  flex-wrap: nowrap
+  justify-content: flex-start
+  align-items: center
+  margin-bottom: clamp(1rem, 2vw, 2rem)
+  overflow-x: auto
+  padding-bottom: clamp(0.5rem, 1vw, 1rem)
 
 .project-image
-  flex: 1 1 30%
-  max-height: 250px
-  width: 100%
-  border-radius: 1rem
-  object-fit: cover
-  filter: drop-shadow(0 0 8px rgba(136,194,115,0.3))
+  width: clamp(50px, 6vw, 100px)
+  height: clamp(50px, 6vw, 100px)
+  object-fit: contain
+  border-radius: clamp(0.2rem, 0.5vw, 0.5rem)
+  margin-right: clamp(1rem, 2vw, 2rem)
+  filter: drop-shadow(0 0 6px rgba(136,194,115,0.3))
+  flex-shrink: 0
 
 .media-right
-  flex: 1 1 45%
+  flex: 1 1 auto
   display: flex
   justify-content: center
   align-items: center
+  min-height: clamp(150px, 25vh, 500px)
   position: relative
-  min-height: 180px
-  z-index: 1
 
 .modal-video
   width: 100%
-  max-height: 400px
-  border-radius: 1rem
+  max-height: clamp(160px, 35vh, 500px)
+  border-radius: clamp(0.5rem, 1vw, 1rem)
   object-fit: cover
   background: #000
 
 .play-btn
-  width: 6rem
-  height: 6rem
+  width: clamp(2.5rem, 5vw, 5rem)
+  height: clamp(2.5rem, 5vw, 5rem)
   border-radius: 50%
-  border: 3px solid #88C273
-  background: rgba(136,194,115,0.2)
+  border: 2px solid #88C273
+  background: transparent
   cursor: pointer
   position: absolute
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
-  opacity: 0
   pointer-events: none
   z-index: 2
-  transition: all 0.4s ease
   &::after
     content: "▶"
     color: #88C273
-    font-size: 2rem
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem)
     position: absolute
     top: 50%
     left: 50%
     transform: translate(-50%, -50%)
-    transition: color 0.3s ease
 
 .media-right:hover .play-btn
   opacity: 1
@@ -134,94 +135,108 @@
   &::after
     color: #000000c9
 
-@keyframes pulse
-  0%
-    transform: scale(1)
-    opacity: 0.7
-  50%
-    transform: scale(1.15)
-    opacity: 1
-  100%
-    transform: scale(1)
-    opacity: 0.7
-
 .modal-info
   display: flex
   flex-direction: column
-  gap: 1rem
+  gap: clamp(0.5rem, 1vw, 1rem)
   text-align: center
 
 .technologies
-  font-size: 0.9rem
+  font-size: clamp(0.8rem, 1vw, 1rem)
   font-style: italic
   color: #ccc
 
 .modal-buttons
   display: flex
-  gap: 1rem
+  gap: clamp(0.5rem, 1vw, 1rem)
   justify-content: center
-  margin-top: 1rem
   flex-wrap: wrap
+  margin-top: clamp(0.5rem, 1vw, 1.5rem)
   button
     background: linear-gradient(135deg,#88C273,#6FA85F)
     color: #fff
     border: none
-    padding: 0.75rem 2rem
-    border-radius: 0.8rem
-    cursor: pointer
+    padding: clamp(0.5rem, 1vw, 0.7rem) clamp(1rem, 2vw, 1.8rem)
+    border-radius: clamp(0.5rem, 0.5vw, 0.8rem)
     font-weight: 700
-    font-size: 1rem
-    overflow: hidden
-    z-index: 1
-    box-shadow: 0 6px 15px rgba(136,194,115,0.3)
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1)
+    font-size: clamp(0.75rem, 1vw, 0.95rem)
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1)
     &:hover
       transform: translateY(-2px)
-      box-shadow: 0 8px 22px rgba(136,194,115,0.5)
       background: linear-gradient(135deg,#6FA85F,#88C273)
     &:active
       transform: translateY(0)
-      box-shadow: 0 6px 15px rgba(136,194,115,0.3)
-
-.modal-content
-  max-height: 65vh
-  overflow-y: auto
-  padding-top: 1rem
-  font-size: 1rem
-  line-height: 1.6
 
 .timeline-vertical
   list-style: none
   padding: 0
   display: flex
   flex-direction: column
-  gap: 0.6rem
+  gap: clamp(0.5rem, 1vw, 1rem)
+  margin: clamp(1rem, 2vw, 2rem) auto
+  position: relative
+  width: fit-content
+  align-items: center
 
 .timeline-item
   display: flex
+  flex-direction: column
+  position: relative
+  gap: clamp(0.2rem, 0.5vw, 0.4rem)
+  padding-left: 0
   align-items: center
-  gap: 0.6rem
-  transition: all 0.2s ease
-  &.done .dot
-    background: #6fa85f
+
+.timeline-item::before
+  content: ""
+  position: absolute
+  left: 50%
+  top: 0
+  transform: translateX(-50%)
+  width: clamp(0.1rem, 0.3vw, 0.2rem)
+  height: 100%
+  background: #555
+  border-radius: 2px
 
 .dot
-  width: 0.8rem
-  height: 0.8rem
+  width: clamp(0.8rem, 1.5vw, 1.2rem)   // ligeiramente menor
+  height: clamp(0.8rem, 1.5vw, 1.2rem)
   border-radius: 50%
   background: #88c273
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem)
+  font-weight: bold
+  color: #fff
+  position: relative
+  margin: 0 auto
 
-/* RESPONSIVIDADE MOBILE */
-@media (max-width: 768px)
-  .modal-media-container
-    flex-direction: column
-  .project-image
-    max-height: 200px
-  .media-right
-    min-height: 150px
-  .modal-buttons
-    flex-direction: column
-    gap: 0.8rem
-  .project-modal,
-  .child-modal
-    padding: 1rem
+.timeline-item.current .dot
+  background: #FFD166
+  color: #000
+  box-shadow: 0 0 6px #FFD166
+  animation: pulse 1.5s infinite
+  &::after
+    content: "▶"
+    color: #000
+    transform: scale(1)
+
+.timeline-item.done .dot
+  background: #6fa85f
+
+.timeline-item .text
+  font-weight: 500
+  color: #f5f5f5
+  text-align: center
+  font-size: clamp(0.85rem, 1.2vw, 1rem)
+  transition: color 0.3s ease
+
+.timeline-item.current .text
+  font-weight: 700
+  color: #FFD166
+
+.timeline-item .description
+  font-size: clamp(0.75rem, 1vw, 0.9rem)
+  color: #ccc
+  text-align: center
+  line-height: 1.5

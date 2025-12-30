@@ -42,7 +42,6 @@ const ProjectCard = ({ project, onClick, fallbackImage = "/assets/fallback.png" 
           />
         )}
 
-        {/* Video */}
         {hoverMedia && video && (
           <video
             src={video}
@@ -53,15 +52,13 @@ const ProjectCard = ({ project, onClick, fallbackImage = "/assets/fallback.png" 
             preload="metadata"
           />
         )}
-
-        {/* Placeholder Brevemente */}
+        
         {!image && !video && (
           <div className="project-card-brevemente">
             <span>Brevemente</span>
           </div>
         )}
 
-        {/* Status */}
         <span
           className="status-badge"
           style={{ backgroundColor: statusColor }}
@@ -69,7 +66,7 @@ const ProjectCard = ({ project, onClick, fallbackImage = "/assets/fallback.png" 
           {statusText}
         </span>
 
-        {/* Hover Play Icon */}
+        {/* johnnydurao1802@gmail.com */}
         {hasMedia && !hoverMedia && video && <div className="hover-play"></div>}
       </div>
 

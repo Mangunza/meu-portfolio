@@ -1,15 +1,39 @@
+@use './../../../../../style/variables'
+@use './../../../../../style/mixins'
+  
 .about-page
   background-color: #000
   color: #fff
-  padding: 5rem 2rem
   font-family: 'Inter', sans-serif
+  padding: 5rem 2rem
 
-/* ================= HERO ================= */
+.section-title
+  h5
+    font-size: 0.75rem
+    font-weight: 500
+    letter-spacing: 0.22em
+    text-transform: uppercase
+    opacity: 0.6
+    color: variables.$text-secondary
+
+  h1
+    font-size: clamp(2.2rem, 4.8vw, 3.1rem)
+    font-weight: 420
+    line-height: 1.12
+    letter-spacing: -0.015em
+    font-family: "Plus Jakarta Sans", sans-serif
+    margin: 0
+
+    span
+      color: variables.$neon !important
+      font-weight: 700
+      transition: all 0.3s ease
+
 .about-hero
-  position: relative
   display: flex
   justify-content: center
   padding: 6rem 0 5rem
+  position: relative
   overflow: hidden
 
   &::after
@@ -22,12 +46,14 @@
 .hero-content
   text-align: center
   z-index: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 1.5rem
 
-/* ===== AVATAR QUADRADO MAIOR ===== */
 .hero-avatar-wrapper
   width: 240px
   height: 240px
-  margin: 0 auto 2.2rem
   padding: 8px
   border-radius: 20px
   background: linear-gradient(135deg, rgba(136,194,115,0.95), rgba(136,194,115,0.35), rgba(255,255,255,0.08))
@@ -56,25 +82,26 @@
   opacity: 0.85
   letter-spacing: 0.6px
 
-/* ================= SECTION TITLE ================= */
-.section-title
-  font-size: 2.1rem
-  font-weight: 700
-  text-align: center
-  margin-bottom: 3rem
+.btn-hero
+  display: inline-flex
+  align-items: center
+  gap: 0.5rem
+  padding: 0.75rem 1.8rem
+  font-weight: 600
+  background: #151515
+  color: #fff
+  border-radius: 999px
+  transition: all 0.3s ease
+  box-shadow: 0 0 6px rgba(0,0,0,0.3)
 
-  &::after
-    content: ""
-    display: block
-    width: 60px
-    height: 2px
-    margin: 1rem auto 0
-    background-color: #88C273
+  &:hover
+    background: #88C273
+    color: #0f0f0f
+    transform: translateY(-2px)
 
-/* ================= PILARES ================= */
 .about-pillars
   max-width: 1100px
-  margin: 0 auto 6rem
+  margin: 6rem auto
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
   gap: 2.5rem
@@ -85,7 +112,7 @@
   border-radius: 16px
   padding: 2.5rem
   box-shadow: 0 4px 20px rgba(0,0,0,0.25)
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease
+  transition: all 0.3s ease
 
   &:hover
     transform: translateY(-4px)
@@ -100,10 +127,9 @@
     line-height: 1.7
     opacity: 0.9
 
-/* ================= TIMELINE ================= */
 .about-timeline
   max-width: 900px
-  margin: 0 auto 6rem
+  margin: 6rem auto
 
 .timeline
   position: relative
@@ -151,7 +177,7 @@
   border: 1px solid rgba(255,255,255,0.06)
   border-radius: 14px
   padding: 1.6rem 2rem
-  transition: border-color 0.3s ease, box-shadow 0.3s ease
+  transition: all 0.3s ease
 
   h4
     margin-bottom: 0.5rem
@@ -160,10 +186,10 @@
     line-height: 1.7
     opacity: 0.9
 
-/* ================= SKILLS ================= */
 .about-skills
   max-width: 900px
-  margin: 0 auto
+  margin: 6rem auto
+  text-align: center
 
 .skills-list
   display: flex
@@ -177,14 +203,13 @@
     padding: 0.6rem 1.4rem
     border-radius: 999px
     font-size: 0.95rem
-    transition: all 0.3s ease, box-shadow 0.3s ease
+    transition: all 0.3s ease
 
     &:hover
       color: #88C273
       border-color: #88C273
       box-shadow: 0 0 12px rgba(136,194,115,0.3)
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 576px)
   .hero-avatar-wrapper
     width: 180px

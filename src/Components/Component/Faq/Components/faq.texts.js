@@ -1,4 +1,3 @@
-// src/Components/Component/Faq/faqData.js
 export const FAQ_DATA = [
   {
     question: "Quais são as suas principais competências como Programador Fullstack?",

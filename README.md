@@ -1,4 +1,4 @@
-# Projecto JM Tech
+# Projecto JM Tech BY johnnydurao1802@gmail.com
 
 ## 1. Sobre o projeto
 
@@ -25,7 +25,7 @@ Demonstrar competências técnicas em **React**, **Vite**, **EmailJS** e **serve
 
 ---
 
-## 2. Estrutura de arquivos
+## 2. Estrutura de arquivos BY  johnnydurao1802@gmail.com
 
 ```text
 project/

@@ -3,10 +3,6 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 import './ContactStyle/contactcard.sass';
 
-// type: "location" | "phone" | "email"
-// title: string
-// value: string
-// pin: boolean -> define se terá animação de pin
 const ContactCard = ({ type, title, value, pin = false }) => {
   let Icon;
   switch(type){
@@ -16,7 +12,6 @@ const ContactCard = ({ type, title, value, pin = false }) => {
     default: Icon = FaMapMarkerAlt;
   }
 
-  // Define a classe para animação de pin
   const cardClass = `info-card ${type}-icon ${pin ? "pin-icon" : ""}`;
 
   return (

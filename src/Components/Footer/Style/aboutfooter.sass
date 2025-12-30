@@ -1,12 +1,9 @@
 @use "./../../../style/variables"
 @use "./../../../style/mixins"
 
-/* ================================
-   About Section
- ================================ */
 .about-section
   width: 100%
-  padding: 5rem 2rem 4rem 2rem
+  padding: 5rem 2rem 4rem
   position: relative
   display: flex
   justify-content: center
@@ -19,34 +16,32 @@
     flex-wrap: wrap
     align-items: center
     justify-content: center
-    gap: 2rem
+    gap: 2.5rem
     max-width: 1200px
     margin: 0 auto
 
   .col-text
-    flex: 2 1 400px
-    max-width: 700px
+    flex: 2 1 420px
+    max-width: 720px
 
   .bio-paragraph
     text-align: justify
-    margin-bottom: 1.2rem
-    line-height: 1.75rem
-    opacity: 0
-    animation: paragraphFadeIn 0.8s forwards
-    animation-delay: var(--delay, 0s)
+    margin-bottom: 1.3rem
+    line-height: 1.8
     color: variables.$text-primary
     font-family: variables.$font-primary
+    opacity: 0
+    transform: translateY(14px)
+    animation: paragraphFadeIn 0.7s ease forwards
+    animation-delay: var(--delay, 0s)
 
-  @keyframes paragraphFadeIn
-    from
-      opacity: 0
-      transform: translateY(12px)
-    to
-      opacity: 1
-      transform: translateY(0)
+@keyframes paragraphFadeIn
+  to
+    opacity: 1
+    transform: translateY(0)
 
 /* ================================
-   Footer Section - Tooltip e Modal
+   Info Icon + Tooltip
  ================================ */
 .info-icon
   position: relative
@@ -60,30 +55,28 @@
   border-radius: 50%
   width: 22px
   height: 22px
-  line-height: 22px
-  font-weight: bold
-  font-size: 14px
+  font-size: 13px
   transition: background variables.$transition-fast ease
 
-  &:hover, &:focus
+  &:hover,
+  &:focus
     background: variables.$surface-hover
 
-  & .tooltip
+  .tooltip
     visibility: hidden
     opacity: 0
     max-width: 220px
-    background-color: variables.$surface-bg
+    background: variables.$surface-bg
     color: variables.$text-primary
-    text-align: center
     padding: 6px 12px
     border-radius: variables.$border-radius-base
     position: absolute
     bottom: 130%
     left: 50%
-    transform: translateX(-50%) translateY(5px)
-    transition: opacity variables.$transition-fast ease, transform variables.$transition-fast ease
+    transform: translateX(-50%) translateY(6px)
     font-size: 13px
     box-shadow: variables.$shadow-soft
+    transition: opacity 0.25s ease, transform 0.25s ease
 
 .info-icon:hover .tooltip,
 .info-icon:focus .tooltip
@@ -91,14 +84,13 @@
   opacity: 1
   transform: translateX(-50%) translateY(0)
 
-/* Modal Footer */
+/* ================================
+   Modal Footer
+ ================================ */
 .modal-info-overlay
   position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background: rgba(0,0,0,0.8)
+  inset: 0
+  background: rgba(0,0,0,0.75)
   display: flex
   justify-content: center
   align-items: center
@@ -110,33 +102,32 @@
   color: variables.$text-primary
   padding: 2rem
   border-radius: variables.$border-radius-base
-  max-width: 500px
+  max-width: 520px
   width: 100%
   box-shadow: variables.$shadow-strong
-  transform: scale(0.95)
-  opacity: 0
-  animation: fadeScaleIn 0.35s forwards
+  animation: fadeScaleIn 0.35s ease forwards
   font-size: 0.95rem
-  line-height: 1.6
-  position: relative
+  line-height: 1.65
   font-family: variables.$font-primary
 
 .modal-close-btn
   margin-top: 1.5rem
-  padding: 0.55rem 1.2rem
+  padding: 0.6rem 1.3rem
   background: variables.$neon
   border: none
   border-radius: variables.$border-radius-card
   cursor: pointer
   color: variables.$color-white
-  font-weight: bold
-  font-size: 0.95rem
-  transition: background variables.$transition-fast ease
+  font-weight: 600
+  transition: background 0.25s ease
 
   &:hover
     background: variables.$neon2
 
 @keyframes fadeScaleIn
+  from
+    transform: scale(0.96)
+    opacity: 0
   to
     transform: scale(1)
     opacity: 1

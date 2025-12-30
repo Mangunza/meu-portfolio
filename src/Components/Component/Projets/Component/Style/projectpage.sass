@@ -12,17 +12,22 @@
 
 .projects-search
   display: block
-  width: 100%
-  max-width: 360px
-  margin: 0 auto 2rem
-  padding: 0.65rem 3rem 0.65rem 1rem
+  width: clamp(220px, 40%, 360px)
+  margin: 0 0 2rem 0
+  padding: clamp(0.5rem, 1vw, 0.65rem) clamp(0.8rem, 1.5vw, 1rem)
   border-radius: 999px
-  border: none
+  border: 2px solid rgba(136,194,115,0.3)
   background: rgba(255,255,255,0.06)
   color: #fff
-  font-size: 0.95rem
+  font-size: clamp(0.85rem, 1vw, 0.95rem)
+  text-align: left
+  transition: all 0.3s ease
   &::placeholder
     color: #aaa
+  &:hover, &:focus
+    border-color: #88C273
+    box-shadow: 0 0 12px rgba(136,194,115,0.5)
+    outline: none
 
 .carousel-wrapper
   position: relative
@@ -34,19 +39,31 @@
   .projects-carousel
     display: flex
     gap: clamp(1rem, 2vw, 1.6rem)
-    overflow-x: hidden
+    overflow-x: auto
     scroll-behavior: smooth
-    padding: 0.5rem 0
+    padding: clamp(0.5rem, 1vw, 0.5rem) 0
     justify-content: flex-start
     flex-wrap: nowrap
     min-width: 300px
+
+    /* SCROLL TRANSPARENTE */
+    &::-webkit-scrollbar
+      width: 0px
+      height: 0px
+    scrollbar-width: none
+    -ms-overflow-style: none
+
+    /* CARDS RESPONSIVOS */
+    > div
+      min-width: clamp(220px, 22%, 260px)
+      flex-shrink: 0
 
   .nav
     opacity: 0
     transition: opacity 0.3s, color 0.3s
     background: none
     border: none
-    font-size: clamp(2rem, 3vw, 2.4rem)
+    font-size: clamp(1.8rem, 3vw, 2.4rem)
     color: #888
     cursor: pointer
     position: absolute
@@ -78,8 +95,8 @@
   gap: 1rem
 
 .loader-spinner
-  width: 50px
-  height: 50px
+  width: clamp(40px, 5vw, 50px)
+  height: clamp(40px, 5vw, 50px)
   border: 6px solid rgba(136, 194, 115, 0.3)
   border-top-color: #88C273
   border-radius: 50%
@@ -92,13 +109,44 @@
     transform: rotate(360deg)
 
 .no-projects
-  padding: 2rem
+  padding: clamp(1.5rem, 2vw, 2rem)
   color: #aaa
   font-style: italic
+  font-size: clamp(0.85rem, 1vw, 1rem)
   text-align: center
 
+/* RESPONSIVIDADE */
+@media (max-width: 1200px)
+  .projects-search
+    width: clamp(220px, 45%, 320px)
+  .projects-carousel > div
+    min-width: clamp(200px, 25%, 240px)
+
+@media (max-width: 992px)
+  .projects-search
+    width: clamp(200px, 55%, 280px)
+  .projects-carousel > div
+    min-width: clamp(180px, 28%, 220px)
+  .nav
+    font-size: clamp(1.6rem, 3vw, 2rem)
+
 @media (max-width: 768px)
+  .projects-search
+    width: 90%
+    font-size: clamp(0.9rem, 1.2vw, 1rem)
   .projects-carousel
-    gap: 1rem
+    gap: clamp(0.8rem, 1.5vw, 1.2rem)
+    overflow-x: auto
+  .projects-carousel > div
+    min-width: clamp(180px, 70%, 220px)
   .nav.left, .nav.right
-    font-size: 2rem
+    font-size: 1.8rem
+
+@media (max-width: 576px)
+  .projects-search
+    width: 95%
+    font-size: clamp(0.85rem, 1vw, 0.95rem)
+  .projects-carousel > div
+    min-width: clamp(160px, 80%, 200px)
+  .nav.left, .nav.right
+    font-size: 1.6rem

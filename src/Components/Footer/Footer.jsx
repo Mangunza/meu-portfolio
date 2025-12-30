@@ -11,7 +11,7 @@ const Footer = () => {
   const [infoModalActive, setInfoModalActive] = useState(false);
   const recaptchaRef = useRef(null);
 
-  // Função para mostrar modal de feedback
+  // Função para mostrar modal de feedback  johnnydurao1802@gmail.com
   const showModal = (msg, type = "success") => {
     setModalMessage(msg);
     setModalType(type);
@@ -19,7 +19,7 @@ const Footer = () => {
     setTimeout(() => setModalActive(false), 4000);
   };
 
-  // Fechar modais com ESC
+  // Fechar modais com ESC johnnydurao1802@gmail.com
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") {
@@ -38,7 +38,6 @@ const Footer = () => {
     section.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Links do Footer com IDs correspondentes ao Main.jsx
   const footerLinks = [
     { label: "Sobre Mim", id: "about" },
     { label: "Tecnologias", id: "technologies" },
@@ -94,7 +93,7 @@ const Footer = () => {
 
         {/* Rodapé inferior */}
         <p className="footer-bottom copy mt-4">
-          © {new Date().getFullYear()} by Johnny Mangunza — Todos os direitos reservados.
+          © {new Date().getFullYear()} by Johnny Durão Mangunza — Todos os direitos reservados.
           <span className="jm-logo">
             JM <span>tech</span>
           </span>
@@ -107,7 +106,7 @@ const Footer = () => {
             onKeyDown={(e) => e.key === "Enter" && setInfoModalActive(true)}
           >
             i
-            <span className="tooltip">Mais informações sobre o projeto</span>
+            <span className="tooltip">Mais informações</span>
           </span>
         </p>
         <p className="recaptcha-notice">Protegido por Google reCAPTCHA</p>
@@ -123,7 +122,7 @@ const Footer = () => {
         {modalMessage}
       </div>
 
-      {/* Modal de informações detalhadas */}
+      {/* Modal de informações detalhadas johnnydurao1802@gmail.com*/}
       {infoModalActive && (
         <div
           className="modal-info-overlay"
@@ -135,15 +134,15 @@ const Footer = () => {
             className="modal-info-content animate-modal"
             onClick={(e) => e.stopPropagation()}
           >
-            <h4>Informações sobre o projeto</h4>
+            <h4>Sobre o Projeto</h4>
             <p>
-              Este portfolio foi desenvolvido como demonstração das minhas competências em desenvolvimento fullstack, incluindo integração de formulários dinâmicos via serviços como EmailJS.
+              Foi desenvolvido como demonstração das minhas competências em desenvolvimento fullstack, incluindo integração de formulários dinâmicos via serviços como EmailJS.
               <br />
               As mensagens enviadas através do formulário são entregues diretamente ao meu e-mail pessoal de forma segura. Nenhum dado é armazenado permanentemente: informações temporárias expiram automaticamente após envio.
               <br />
-              O design segue padrões modernos de UI/UX com tema dark premium, animações sutis e acessibilidade, garantindo uma experiência elegante e profissional.
+              O design segue padrões modernos de UI/UX com tema Escuro Verde Mancha, animações sutis em verde e acessibilidade, garantindo uma experiência elegante.
               <br />
-              <strong>Políticas de uso:</strong> Este portfolio destina-se apenas a fins de demonstração e análise de habilidades. Todos os dados enviados pelo formulário serão tratados com confidencialidade e não serão utilizados para qualquer outro propósito.
+              <strong>Políticas de uso:</strong> Este portfolio destina-se apenas a fins de demonstração e análise de habilidades. Todos os dados enviados pelo formulário serão tratados com confidencialidade protegida pela Google reCAPTCHA e não serão utilizados para qualquer outro propósito.
             </p>
             <button
               className="modal-close-btn"

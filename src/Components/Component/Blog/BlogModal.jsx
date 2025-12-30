@@ -4,7 +4,6 @@ import "./style/blogmodal.sass";
 
 const FALLBACK_IMAGE = "/assets/fallback.png";
 
-/* ================= TRAP FOCUS ================= */
 function useTrapFocus(ref, isOpen, onClose) {
   useEffect(() => {
     if (!isOpen || !ref.current) return;
@@ -12,7 +11,6 @@ function useTrapFocus(ref, isOpen, onClose) {
     const focusables = ref.current.querySelectorAll(
       "button, video, [tabindex]:not([tabindex='-1'])"
     );
-
     if (!focusables.length) return;
 
     const first = focusables[0];
@@ -37,7 +35,6 @@ function useTrapFocus(ref, isOpen, onClose) {
   }, [ref, isOpen, onClose]);
 }
 
-/* ================= MODAL FILHO ================= */
 function ChildModal({ title, children, onClose }) {
   const modalRef = useRef(null);
   useTrapFocus(modalRef, true, onClose);
@@ -72,7 +69,6 @@ function ChildModal({ title, children, onClose }) {
   );
 }
 
-/* ================= MODAL PRINCIPAL ================= */
 function BlogModal({ project, onClose }) {
   if (!project) return null;
 
@@ -97,7 +93,9 @@ function BlogModal({ project, onClose }) {
 
   const handlePlay = () => {
     setIsVideoPlaying(true);
-    videoRef.current?.play();
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
   };
 
   const openDesc = () => {
@@ -112,67 +110,67 @@ function BlogModal({ project, onClose }) {
 
   return (
     <>
-      {/* MODAL PRINCIPAL */}
-      <motion.div
-        className="blog-modal-overlay"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      >
+      <AnimatePresence>
         <motion.div
-          ref={modalRef}
-          className="blog-modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label={title}
-          initial={{ scale: 0.97 }}
-          animate={{ scale: 1 }}
-          onClick={(e) => e.stopPropagation()}
+          className="blog-modal-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
         >
-          <button className="close-btn" onClick={onClose} aria-label="Fechar" />
+          <motion.div
+            ref={modalRef}
+            className="blog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={title}
+            initial={{ scale: 0.97 }}
+            animate={{ scale: 1 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="close-btn" onClick={onClose} aria-label="Fechar" />
 
-          <span className={`project-status ${status}`}>
-            {status.toLowerCase().includes("produção")
-              ? "Em Produção"
-              : "Em Desenvolvimento"}
-          </span>
+            <span className={`project-status ${status}`}>
+              {status.toLowerCase().includes("produção") ? "Em Produção" : "Em Desenvolvimento"}
+            </span>
+            <div className="modal-media-container">
+              <img src={image} alt={title} className="preview-image" loading="lazy" />
 
-          {/* MEDIA */}
-          <div className="modal-media-container">
-            <img src={image} alt={title} className="preview-image" loading="lazy" />
-
-            <div className="media-right">
-              {video && !isVideoPlaying && (
-                <button className="play-btn" onClick={handlePlay} aria-label="Reproduzir vídeo" />
-              )}
-              {video && (
-                <video ref={videoRef} src={video} className="modal-video" controls />
-              )}
+              <div className="media-right">
+                {video && !isVideoPlaying && (
+                  <button className="play-btn" onClick={handlePlay} aria-label="Reproduzir vídeo" />
+                )}
+                {video && (
+                  <video
+                    ref={videoRef}
+                    src={video}
+                    className="modal-video"
+                    controls
+                    autoPlay={isVideoPlaying}
+                  />
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* INFO */}
-          <div className="modal-info">
-            <h2>{title}</h2>
-            <span className="technologies">{technologies}</span>
+            <div className="modal-info">
+              <h2>{title}</h2>
+              <span className="technologies">{technologies}</span>
 
-            <div className="modal-buttons">
-              <button onClick={openDesc}>Sobre o projeto</button>
-              <button onClick={openTimeline}>Progresso do projeto</button>
+              <div className="modal-buttons">
+                <button onClick={openDesc}>Sobre o projeto</button>
+                <button onClick={openTimeline}>Progresso do projeto</button>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </AnimatePresence>
 
-      {/* MODAL DESCRIÇÃO */}
       {showDesc && (
         <ChildModal title="Sobre o projeto" onClose={() => setShowDesc(false)}>
           <p className="description">{description}</p>
         </ChildModal>
       )}
 
-      {/* MODAL TIMELINE */}
       {showTimeline && (
         <ChildModal title="Progresso do projeto" onClose={() => setShowTimeline(false)}>
           {timeline.steps.length > 0 ? (
@@ -182,14 +180,13 @@ function BlogModal({ project, onClose }) {
                 return (
                   <li
                     key={step.key}
-                    className={`check-item ${step.completed ? "completed" : ""} ${
-                      isCurrent ? "current" : ""
-                    }`}
+                    className={`check-item ${step.completed ? "completed" : ""} ${isCurrent ? "current" : ""}`}
                   >
                     <span className="check-icon">
                       {step.completed ? "✔" : isCurrent ? "➤" : "•"}
                     </span>
-                    <strong>{step.title}</strong> - {step.description}
+                    <span className="text">{step.title}</span>
+                    <span className="description">{step.description}</span>
                   </li>
                 );
               })}

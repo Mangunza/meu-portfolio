@@ -5,15 +5,12 @@ import "./Style/about.sass";
 
 const About = () => (
   <section className="about-section" id="sobremim">
-    {/* BACKGROUND */}
-    <div className="background-base" />
-    <div className="background-neon" />
 
-    {/* HEADER - RIGHT SIDE */}
+    {/* johnnydurao1802@gmail.com */}
     <div className="container">
       <div className="row justify-content-end">
-        <div className="col-lg-6 col-md-8 mt-lg-0 mt-5 text-lg-end text-center">
-          <div className="section-title faq-title mb-5 mt-5">
+        <div className="col-lg-6 col-md-8 mt-lg-5 text-lg-end">
+          <div className="section-title">
             <h5>Sobre</h5>
             <h1>
               Sobre <span>mim</span>
@@ -23,9 +20,8 @@ const About = () => (
       </div>
     </div>
 
-    {/* MAIN CONTENT */}
     <div className="about-wrapper">
-      {/* IMAGE */}
+      
       <div className="col-image">
         <figure className="about-image-box">
           <img
@@ -40,7 +36,6 @@ const About = () => (
         </figure>
       </div>
 
-      {/* TEXT */}
       <div className="col-text">
         <section className="bio-section">
           <div className="bio-content">
@@ -58,7 +53,6 @@ const About = () => (
       </div>
     </div>
 
-    {/* PARTICLES */}
     <canvas className="particles-canvas" />
   </section>
 );
