@@ -1,10 +1,9 @@
 import React from "react";
 
 import Header from "../../../Header/Header";
-import Footer from "../../../Footer/Footer";
 
 import avatar from "../../../../assets/JM.png";
-import btnArrow from "./../../../../assets/btn-arrow.svg";
+import btnArrow from "./../../../../assets/about-more-circle.svg";
 
 import { TIMELINE, SOFT_SKILLS } from "./aboutpage.data";
 import "./Style/aboutpage.sass";
@@ -22,16 +21,15 @@ const AboutPage = () => (
                 <div className="section-title">
                   <h5>Portfólio</h5>
                   <h1>
-                    Aqui algumas <span>Abilidades em TI</span>
+                    As minhas <span>habilidades</span>
                   </h1>
                   <p className="lead">
-                    Descubra projetos que combinam criatividade, tecnologia e
-                    resultados reais.
-                    <strong> Teste, explore e inspire-se!</strong>
+                    Projetos desenvolvidos com foco em performance,
+                    escalabilidade e experiência do utilizador.
+                    <strong> Código limpo, soluções reais.</strong>
                   </p>
                 </div>
               </div>
-
               <div className="col-lg-6 d-flex justify-content-end align-items-end">
                 <div className="btn-1">
                   <Link to="/contact" className="btn">
@@ -45,7 +43,6 @@ const AboutPage = () => (
         </div>
       </header>
 
-      {/* ================= HERO ================= */}
       <section className="about-hero">
         <div className="hero-content">
           <div className="hero-avatar-wrapper">
@@ -64,7 +61,6 @@ const AboutPage = () => (
         </div>
       </section>
 
-      {/* ================= PILARES ================= */}
       <section className="about-pillars">
         <article className="pillar">
           <h3>Missão</h3>
@@ -93,7 +89,6 @@ const AboutPage = () => (
         </article>
       </section>
 
-      {/* ================= TIMELINE ================= */}
       <section className="about-timeline">
         <h2 className="section-title">Percurso Profissional</h2>
 
@@ -116,7 +111,7 @@ const AboutPage = () => (
         </div>
       </section>
 
-      {/* ================= SOFT SKILLS ================= */}
+      {/* ==== by  johnnydurao1802@gmail.com ======= */}
       <section className="about-skills">
         <h2 className="section-title">Soft Skills</h2>
 
@@ -127,8 +122,6 @@ const AboutPage = () => (
         </ul>
       </section>
     </main>
-
-    <Footer />
   </>
 );
 

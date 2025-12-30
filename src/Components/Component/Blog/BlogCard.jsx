@@ -10,7 +10,7 @@ function BlogCard({ project, onOpen, fallbackImage }) {
     ? "#3b82f6" // azul
     : statusNormalized.includes("desenvolvimento")
     ? "#facc15" // amarelo
-    : "#88C273"; // neon
+    : "#88C273"; // neon verde  by johnnydurao1802@gmail.com
 
   const statusText = statusNormalized.includes("produção")
     ? "Em Produção"

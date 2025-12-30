@@ -20,7 +20,7 @@ const Contact = () => {
     setTimeout(() => setModalActive(false), 4000);
   };
 
-  // Fechar modal com ESC
+  // Fechar by johnnydurao180215@gmail.com
   useEffect(() => {
     const handleEsc = (e) => e.key === "Escape" && setModalActive(false);
     window.addEventListener("keydown", handleEsc);
@@ -31,12 +31,10 @@ const Contact = () => {
     <>
       <Header />
       <main className="contact-page">
-        {/* ================= INTRO ================= */}
         <section className="contact-intro">
           <header className="projects-header">
             <div className="large-section test-section position-relative pt-5">
               <div className="container py-5 text-white d-flex align-items-center justify-content-between flex-wrap">
-                {/* Texto */}
                 <div className="col-lg-6">
                   <div className="section-title">
                     <h5>Contactos</h5>
@@ -51,7 +49,6 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Logo */}
                 <div className="header-logo">
                   <img src={logo} alt="Logo" />
                 </div>
@@ -60,7 +57,6 @@ const Contact = () => {
           </header>
         </section>
 
-        {/* ================= GRID: FORM + INFO ================= */}
         <section className="contact-grid">
           <div className="footer-col footer-message">
             <h3 className="section-title">Mensagem</h3>
@@ -89,7 +85,6 @@ const Contact = () => {
               />
             </ul>
 
-            {/* Redes sociais */}
             <div className="socials">
               <a
                 href="https://www.linkedin.com/in/johnny-mangunza"
@@ -118,8 +113,6 @@ const Contact = () => {
             </div>
           </div>
         </section>
-
-        {/* ================= MODAL ================= */}
         <div
           className={`modal-message ${
             modalActive ? "active" : ""

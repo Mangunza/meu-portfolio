@@ -1,7 +1,3 @@
-// =====================================================
-// JS para FAQ: animação suave da primeira imagem
-// e efeitos adicionais de interação
-// =====================================================
 export function initFaqAnimations() {
   const faqImage1 = document.querySelector(".faq-image1 img");
 
@@ -10,7 +6,7 @@ export function initFaqAnimations() {
   let offset = 0;
   let direction = 1;
 
-  // Função de animação suave
+  // Função para a animação BY johnnydurao1802@gmail.com
   function animateFloat() {
     offset += direction * 0.2;
     if (offset > 10 || offset < -10) direction *= -1;

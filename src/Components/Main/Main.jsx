@@ -10,7 +10,7 @@ import About from '../Component/About/About';
 function Main() {
   return (
     <>
-      {/* About */}
+      {/* About by johnnydurao180215@gmail.com  */}
       <section id="about">
         <About />
       </section>
@@ -20,7 +20,7 @@ function Main() {
         <Tecnologies />
       </section>
 
-      {/* Testimonial */}
+      {/* Testimonial  by johnnydurao180215@gmail.com */}
       <section id="testimonial">
         <Testimonial />
       </section>
@@ -35,7 +35,7 @@ function Main() {
         <Faq />
       </section>
 
-      {/* Blog */}
+      {/* Blog by johnnydurao180215@gmail.com */}
       <section id="blog">
         <Blog />
       </section>

@@ -5,7 +5,7 @@ import App from './App.jsx'
 import './index.css'
 
 import "./style/custom-bootstrap.scss";
-// Bootstrap CSS pronto
+// Bootstrap CSS pronto   johnnydurao1802@gmail.com
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 

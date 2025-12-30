@@ -1,4 +1,4 @@
-// blog.data.js
+// by  johnnydurao1802@gmail.com
 import nichaImg from "./../../../assets/projects/nicha/nicha-rosa.png";
 import nichaVideo from "./../../../assets/projects/nicha/nicha-sabores.mp4";
 
@@ -10,7 +10,7 @@ export const PROJECTS_DATA = [
     id: 1,
     title: "Gestão de Encomendas – Sabores da Titi Nicha",
     status: "Em Desenvolvimento",
-    technologies: "Laravel, PHP, MySQL, Blade",
+    technologies: "Bootstrap, PHP, MySQL, Blade",
     description:
       "Sistema web para gestão de encomendas de doces e produtos alimentícios, com cadastro de clientes, produtos e relatórios de vendas.",
     image: nichaImg,
@@ -18,7 +18,7 @@ export const PROJECTS_DATA = [
     timeline: {
       steps: [
         { key: "planejamento", title: "Planejamento", description: "Definição de requisitos e cronograma", completed: true },
-        { key: "desenvolvimento", title: "Desenvolvimento", description: "Implementação das funcionalidades principais", completed: false },
+        { key: "desenvolvimento", title: "Desenvolvimento", description: "Implementação das funcionalidades principais", completed: true },
         { key: "testes", title: "Testes", description: "Validação de funcionalidades e correções", completed: false },
         { key: "deploy", title: "Deploy", description: "Publicação do sistema em produção", completed: false },
       ],
@@ -28,7 +28,7 @@ export const PROJECTS_DATA = [
   {
     id: 2,
     title: "Marketplace Moderno",
-    status: "Em Produção",
+    status: "Em Desenvolvimento",
     technologies: "React, Laravel, MySQL, Tailwind",
     description:
       "Plataforma de marketplace moderna, responsiva, com filtros AJAX, scroll infinito, carrinho de compras e visualização detalhada de produtos.",
@@ -38,13 +38,12 @@ export const PROJECTS_DATA = [
       steps: [
         { key: "planejamento", title: "Planejamento", description: "Estrutura de banco e wireframes", completed: true },
         { key: "desenvolvimento", title: "Desenvolvimento", description: "Front-end React e Back-end Laravel", completed: true },
-        { key: "testes", title: "Testes", description: "Testes de performance e responsividade", completed: true },
-        { key: "deploy", title: "Deploy", description: "Lançamento do marketplace", completed: true },
+        { key: "testes", title: "Testes", description: "Testes de performance e responsividade", completed: false },
+        { key: "deploy", title: "Deploy", description: "Lançamento do marketplace", completed: false },
       ],
       currentStep: "deploy",
     },
   },
-  // Projetos extras
   {
     id: 3,
     title: "Aplicativo Mobile Fitness",
@@ -58,7 +57,7 @@ export const PROJECTS_DATA = [
   {
     id: 4,
     title: "Sistema de Reservas para Hotéis",
-    status: "Em Produção",
+    status: "Em Desenvolvimento",
     technologies: "React, Node.js, MongoDB",
     description: "Sistema web para reservas de quartos, gestão de clientes e pagamentos online.",
     image: null,
@@ -78,7 +77,7 @@ export const PROJECTS_DATA = [
   {
     id: 6,
     title: "Sistema de Gestão de Inventário",
-    status: "Em Produção",
+    status: "Em Desenvolvimento",
     technologies: "Laravel, PHP, MySQL",
     description: "Controle de estoque, pedidos e relatórios para pequenas empresas.",
     image: null,
@@ -97,8 +96,8 @@ export const PROJECTS_DATA = [
   },
   {
     id: 8,
-    title: "Sistema de Pagamentos Online",
-    status: "Em Produção",
+    title: "Sistema de Pagamentos e fatura Online",
+    status: "Em Desenvolvimento",
     technologies: "Node.js, Express, Stripe API",
     description: "Plataforma de pagamentos segura para e-commerce e serviços digitais.",
     image: null,
@@ -118,9 +117,19 @@ export const PROJECTS_DATA = [
   {
     id: 10,
     title: "Aplicativo de Delivery",
-    status: "Em Produção",
-    technologies: "Flutter, Firebase",
+    status: "Em Desenvolvimento",
+    technologies: "React Nactive, Firebase",
     description: "App para pedidos de comida com geolocalização e rastreio em tempo real.",
+    image: null,
+    video: null,
+    timeline: { steps: [], currentStep: "" },
+  },
+  {
+    id: 11,
+    title: "Aplicativo de Portfólio",
+    status: "Em Desenvolvimento",
+    technologies: "React Nactive, Firebase",
+    description: "App para gestão de prestação serviços.",
     image: null,
     video: null,
     timeline: { steps: [], currentStep: "" },

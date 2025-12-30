@@ -1,16 +1,11 @@
-@use "./../../../../style/variables"
-@use "./../../../../style/mixins"
+@use "./../../../../style/variables";
 
-/* =====================================================
- FAQ Section – Glass + Neon Theme (ULTRA COMPACTO)
- ===================================================== */
 .faq-section
   display: flex
   flex-wrap: wrap
   gap: 1.2rem
   padding: 2rem 1.8rem
   background: rgba(0,0,0,0.95)
-  box-shadow: inset 0 0 80px rgba(0,0,0,0.8)
   backdrop-filter: blur(16px)
   -webkit-backdrop-filter: blur(16px)
   border-radius: 1.2rem
@@ -18,10 +13,36 @@
   font-family: "Plus Jakarta Sans", sans-serif
   font-size: 0.95rem
   line-height: 1.6
+  position: relative
 
-/* =====================================================
- Imagens FAQ
- ===================================================== */
+.faq-titles
+  text-align: right
+  margin-bottom: 2rem
+
+  h5
+    font-size: 0.75rem
+    font-weight: 500
+    letter-spacing: 0.22em
+    text-transform: uppercase
+    opacity: 0.6
+    color: variables.$text-secondary
+
+  h1
+    font-size: clamp(2.2rem, 4.8vw, 3.1rem)
+    font-weight: 420
+    line-height: 1.12
+    letter-spacing: -0.015em
+    font-family: "Plus Jakarta Sans", sans-serif
+    margin: 0
+
+    span
+      color: variables.$neon !important
+      font-weight: 700
+      transition: all 0.3s ease
+
+/* ==============================
+ Images
+ ============================== */
 .faq-image1
   width: 85%
   border-radius: 1rem
@@ -31,14 +52,6 @@
   left: -25px
   z-index: 1
   animation: floatCinematicLeft 10s ease-in-out infinite alternate
-
-@keyframes floatCinematicLeft
-  0%
-    transform: translateY(0) rotate(-3deg)
-  50%
-    transform: translateY(-6px) rotate(-5deg)
-  100%
-    transform: translateY(0) rotate(-3deg)
 
 .faq-image2
   position: absolute
@@ -50,28 +63,19 @@
   z-index: 2
   transition: transform 0.6s ease, box-shadow 0.4s ease, filter 0.4s ease
 
-  &:hover
-    transform: translateY(-8px) rotate(25deg) scale(1.03)
-    box-shadow: 0 0 20px variables.$neon
-    filter: drop-shadow(0 0 14px variables.$neon)
+.faq-image2:hover
+  transform: translateY(-8px) rotate(5deg) scale(1.03)
+  box-shadow: 0 0 20px variables.$neon
+  filter: drop-shadow(0 0 14px variables.$neon)
 
-@keyframes floatCinematicRotate
+@keyframes floatCinematicLeft
   0%
-    transform: rotate(0deg)
-  100%
-    transform: rotate(360deg)
-
-@keyframes floatHoverEffect
-  0%
-    transform: translateY(0) scale(1)
+    transform: translateY(0) rotate(-3deg)
   50%
-    transform: translateY(-8px) scale(1.03)
+    transform: translateY(-6px) rotate(-5deg)
   100%
-    transform: translateY(0) scale(1)
+    transform: translateY(0) rotate(-3deg)
 
-/* =====================================================
- Help Box
- ===================================================== */
 .help-box-main
   position: absolute
   top: 8px
@@ -92,14 +96,11 @@
   cursor: pointer
   transition: all 0.25s ease
 
-  &:hover
-    color: variables.$neon
-    box-shadow: 0 0 16px variables.$neon
-    transform: scale(1.03)
+.help-box:hover
+  color: variables.$neon
+  box-shadow: 0 0 16px variables.$neon
+  transform: scale(1.03)
 
-/* =====================================================
- Accordion
- ===================================================== */
 .accordion
   display: flex
   flex-direction: column
@@ -107,72 +108,75 @@
   background: transparent
 
 .accordion-item
-  background: rgba(0,0,0,0.55)
-  border-radius: 0.9rem
-  border: 1px solid rgba(255,255,255,0.06)
+  background: rgba(0,0,0,0.35)
+  backdrop-filter: blur(14px)
+  -webkit-backdrop-filter: blur(14px)
+  border-radius: 1rem
+  border: 1px solid rgba(255,255,255,0.08)
   overflow: hidden
-  transition: border 0.25s ease, box-shadow 0.25s ease
+  transition: all 0.3s ease
 
   &:hover
-    border-color: rgba(variables.$neon, 0.35)
-    box-shadow: 0 0 14px rgba(variables.$neon, 0.2)
+    box-shadow: 0 0 12px rgba(variables.$neon,0.3)
+    border-color: rgba(variables.$neon,0.25)
 
-.faq-btn,
 .accordion-button.faq-btn
+  background: transparent !important
+  color: variables.$color-white !important
+  padding: 1rem 1.4rem
+  font-weight: 600
+  border: none
+  border-radius: 0.75rem
+  box-shadow: none !important
   display: flex
   align-items: center
   justify-content: space-between
-  padding: 0.7rem 1.2rem
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem)
-  font-weight: 600
-  background: rgb(0,0,0) !important
-  color: variables.$color-white !important
-  border: none
-  border-radius: 0.7rem
-  border-top: 2px solid variables.$neon
   cursor: pointer
   transition: all 0.25s ease
 
-  &::after
-    display: none
+.accordion-button.faq-btn::after
+  display: none
 
-  &:hover,
-  &.open
-    color: variables.$neon
-    box-shadow: inset 0 -2px 0 variables.$neon
+.accordion-button.faq-btn.open,
+.accordion-button.faq-btn:hover
+  color: variables.$neon
+
+.accordion-collapse
+  background: transparent !important
+  max-height: 0
+  opacity: 0
+  overflow: hidden
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.3s ease
+
+.accordion-collapse.show
+  max-height: 1000px
+  opacity: 1
+  padding: 0.8rem 1rem
+
+.accordion-body
+  background: rgba(255,255,255,0.06)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  border-radius: 0.75rem
+  padding: 1rem 1.2rem
+  color: variables.$color-white
+  margin: 0.6rem 1.2rem 1.2rem
+  transition: all 0.3s ease
+  overflow: auto
+
+.accordion-body:hover
+  box-shadow: inset 0 0 14px rgba(variables.$neon,0.25)
 
 .icon-wrapper
   width: 28px
   height: 28px
   border-radius: 50%
-  border: 1px solid rgba(variables.$neon, 0.4)
-  color: variables.$neon
+  border: 1px solid rgba(variables.$neon,0.4)
   display: flex
   align-items: center
   justify-content: center
+  color: variables.$neon
 
-.accordion-collapse
-  max-height: 0
-  opacity: 0
-  overflow: hidden
-  background: rgba(0,0,0,0.4)
-  border-radius: 0.7rem
-  padding: 0 1rem
-  transition: max-height 0.4s ease, opacity 0.4s ease
-
-.accordion-collapse.show
-  max-height: 500px
-  opacity: 1
-  padding: 0.8rem 1rem
-
-.accordion-body
-  font-size: 0.9rem
-  line-height: 1.6
-  color: rgba(255,255,255,0.85)
-
-/* =====================================================
- Remove azul padrão
- ===================================================== */
 button,
 .faq-btn,
 .accordion-button,
@@ -182,57 +186,56 @@ button,
   outline: none !important
   box-shadow: none !important
 
-*
-  -webkit-tap-highlight-color: transparent
-
-.accordion-button:not(.collapsed)
-  background: rgb(0,0,0) !important
-  color: variables.$color-white !important
-  box-shadow: none !important
-
-.accordion-item:focus-within
-  box-shadow: none !important
-
-/* Forçar letras para branco */
-.faq-section,
-.faq-section *
-  color: variables.$color-white !important
-
-.accordion-button,
-.accordion-button:hover,
-.accordion-button.open
-  color: variables.$color-white !important
-
-.accordion-body
-  color: variables.$color-white !important
-
-.help-box
-  color: variables.$color-white !important
-
-/* =====================================================
- Responsivo
- ===================================================== */
-@media (max-width: 768px)
-  .faq-section
-    gap: 1rem
-    padding: 2rem 1.2rem
+@media (max-width: 992px)
+  .faq-titles
+    text-align: center
 
   .faq-image1
-    left: -10px
-    width: 80%
+    width: 65%
+    left: -5px
 
-  /* Mantém o mesmo comportamento da segunda imagem */
   .faq-image2
-    position: absolute
-    bottom: -20px
-    right: 0
     width: 45%
-    border-radius: 1rem
-    box-shadow: 0 20px 50px rgba(0,0,0,0.55)
-    z-index: 2
-    transition: transform 0.6s ease, box-shadow 0.4s ease, filter 0.4s ease
+    margin: 0.8rem auto 0
+    position: relative
+    bottom: auto
+    right: auto
+
+  .accordion-button.faq-btn
+    padding: 0.85rem 1rem
+
+  .accordion-body
+    font-size: 0.95rem
+    max-height: none
+    overflow: auto
+    padding: 0.8rem 1rem
 
   .help-box-main
     position: relative
-    right: 0
-    margin-bottom: 1rem
+    top: auto
+    right: auto
+    margin: 1rem auto
+
+@media (max-width: 576px)
+  .faq-image1
+    width: 100%
+    left: 0
+
+  .faq-image2
+    width: 55%
+
+  h1
+    font-size: clamp(1.5rem, 3.5vw, 2rem)
+
+  h5
+    font-size: 0.65rem
+
+  .accordion-button.faq-btn
+    padding: 0.7rem 0.9rem
+    font-size: 0.9rem
+
+  .accordion-body
+    font-size: 0.85rem
+    padding: 0.7rem 0.9rem
+    max-height: none
+    overflow: auto

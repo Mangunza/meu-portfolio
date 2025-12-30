@@ -1,4 +1,3 @@
-// tecnologies.data.js
 import {
   DiHtml5,
   DiCss3,

@@ -4,7 +4,7 @@ import "./Style/projectmodal.sass";
 
 const FALLBACK_IMAGE = "/assets/fallback.png";
 
-// Hook para foco no modal
+// BY  johnnydurao1802@gmail.com
 function useTrapFocus(ref, isOpen, onClose) {
   useEffect(() => {
     if (!isOpen || !ref.current) return;
@@ -37,7 +37,6 @@ function useTrapFocus(ref, isOpen, onClose) {
   }, [ref, isOpen, onClose]);
 }
 
-// Child modal
 function ChildModal({ title, children, onClose }) {
   const modalRef = useRef(null);
   useTrapFocus(modalRef, !!title, onClose);
@@ -73,7 +72,7 @@ function ChildModal({ title, children, onClose }) {
   );
 }
 
-// Modal principal do projeto
+// by johnnydurao180215@gmail.com
 function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
@@ -91,8 +90,11 @@ function ProjectModal({ project, onClose }) {
     status,
     image,
     video,
-    timeline = [],
+    timeline = {},
   } = project;
+
+  const steps = timeline?.steps || [];
+  const currentStepKey = timeline?.currentStep || "";
 
   const hasMedia = image || video;
   useTrapFocus(modalRef, !!project, onClose);
@@ -204,15 +206,20 @@ function ProjectModal({ project, onClose }) {
           title="Progresso do projeto"
           onClose={() => setShowTimeline(false)}
         >
-          {timeline.length > 0 ? (
+          {steps.length > 0 ? (
             <ul className="timeline-vertical">
-              {timeline.map((item, idx) => (
+              {steps.map((item, idx) => (
                 <li
                   key={idx}
-                  className={`timeline-item ${item.completed ? "done" : ""}`}
+                  className={`timeline-item ${item.completed ? "done" : ""} ${
+                    item.key === currentStepKey ? "current" : ""
+                  }`}
                 >
                   <span className="dot" />
                   <span className="text">{item.title}</span>
+                  {item.description && (
+                    <span className="description">{item.description}</span>
+                  )}
                 </li>
               ))}
             </ul>

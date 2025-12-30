@@ -2,10 +2,6 @@
 @use "./../../style/variables"
 @use "./../../style/mixins"
 
-// ============================
-// HEADER FUTURISTA
-// ============================
-
 #header
   width: 100%
   padding: 1.3rem 2rem
@@ -88,7 +84,7 @@
   text-decoration: none
   letter-spacing: .5px
   transition: color 0.25s ease
-  text-shadow: none // remove qualquer sombra do texto
+  text-shadow: none // johnnydurao1802@gmail.com
 
   &:visited,
   &:active
@@ -113,9 +109,6 @@
     &::after
       width: 100%
 
-// ============================
-// HAMBURGER MOBILE
-// ============================
 
 .nav-link.active
   color: variables.$neon
@@ -148,9 +141,6 @@
     span:nth-child(3)
       transform: translateY(-11px) rotate(-45deg)
 
-// ============================
-// NAV MENU DESKTOP
-// ============================
 
 .nav-menu
   ul
@@ -182,10 +172,6 @@
 
     &:hover::after
       width: 100%
-
-// ============================
-// MOBILE NAV
-// ============================
 
 @media (max-width: 900px)
   .hamburger
@@ -244,10 +230,6 @@
           color: variables.$neon2
           text-shadow: 0 0 12px rgba(170,255,201,.65)
 
-// ============================
-// OVERLAY
-// ============================
-
 .overlay
   position: fixed
   top: 0
@@ -264,9 +246,6 @@
     opacity: 1
     pointer-events: all
 
-// ============================
-// ANIMAÇÕES
-// ============================
 
 @keyframes stagger
   to

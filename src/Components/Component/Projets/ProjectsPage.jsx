@@ -16,9 +16,10 @@ import ProjectCard from "./Component/ProjectCard";
 import ProjectModal from "./Component/ProjectModal";
 
 import "./Component/Style/projectpage.sass";
-import btnArrow from "./../../../assets/btn-arrow.svg";
+import btnArrow from "./../../../assets/about-more-circle.svg";
 import { PROJECTS_DATA } from "./projectspage.data";
 
+// By johnnydurao1802@gmail.com
 const debounce = (fn, delay = 300) => {
   let timer;
   return (...args) => {
@@ -29,11 +30,7 @@ const debounce = (fn, delay = 300) => {
 
 const fallbackImage = "/assets/fallback.png";
 const fallbackVideo = null;
-const sanitizeInput = (str) =>
-  str
-    .replace(/<[^>]*>?/gm, "")
-    .trim()
-    .slice(0, 50);
+const sanitizeInput = (str) => str.replace(/<[^>]*>?/gm, "").trim();
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
@@ -94,23 +91,19 @@ const ProjectsPage = () => {
   const scrollRight = () =>
     carouselRef.current?.scrollBy({ left: 320, behavior: "smooth" });
 
-  // Carrossel infinito contínuo
+  // Carrossel infinito contínuo desktop
   useEffect(() => {
+    if (!carouselRef.current) return;
     let req;
-    const speed = 0.5; // ajusta a velocidade
-
+    const speed = 0.5;
     const animate = () => {
       const el = carouselRef.current;
-      if (!el || isHovering) {
+      if (!el || isHovering || window.innerWidth < 768) {
         req = requestAnimationFrame(animate);
         return;
       }
       el.scrollLeft += speed;
-
-      // Loop infinito
-      if (el.scrollLeft >= el.scrollWidth / 2) {
-        el.scrollLeft = 0;
-      }
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth) el.scrollLeft = 0;
       req = requestAnimationFrame(animate);
     };
     req = requestAnimationFrame(animate);
@@ -138,8 +131,9 @@ const ProjectsPage = () => {
                   <div className="section-title">
                     <h5>Projetos</h5>
                     <h1>
-                      Soluções que <span>encantam clientes</span>
+                      Automatizee suas <span>actividades</span>
                     </h1>
+
                     <p className="lead">
                       Descubra projetos que combinam criatividade, tecnologia e
                       resultados reais.
@@ -149,7 +143,7 @@ const ProjectsPage = () => {
                 </div>
                 <div className="col-lg-6 d-flex justify-content-end align-items-end">
                   <div className="btn-1">
-                    <Link to="/contact" className="btn">
+                    <Link to="/contact" className="btn" aria-label="Contato">
                       Contacto
                       <img src={btnArrow} alt="arrow" />
                     </Link>
@@ -167,6 +161,7 @@ const ProjectsPage = () => {
             placeholder="🔍 Procurar projeto"
             maxLength={50}
             onChange={(e) => handleSearch(e.target.value)}
+            aria-label="Procurar projeto"
           />
         </div>
 
@@ -175,7 +170,11 @@ const ProjectsPage = () => {
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          <button className="nav left" onClick={scrollLeft}>
+          <button
+            className="nav left"
+            onClick={scrollLeft}
+            aria-label="Scroll para esquerda"
+          >
             ‹
           </button>
           <div className="projects-carousel" ref={carouselRef}>
@@ -190,34 +189,34 @@ const ProjectsPage = () => {
               ) : searchedProjects.length === 0 ? (
                 <div className="no-projects">🔍 Nenhum projeto encontrado</div>
               ) : (
-                [...searchedProjects, ...searchedProjects].map(
-                  (project, index) => (
-                    <motion.div
-                      key={`${project.id}-${index}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      style={{ minWidth: "260px", flexShrink: 0 }}
-                    >
-                      <ProjectCard
-                        project={{
-                          ...project,
-                          image: project.image || fallbackImage,
-                          video: project.video || fallbackVideo,
-                          brief:
-                            !project.image && !project.video
-                              ? "Brevemente"
-                              : "",
-                        }}
-                        onClick={() => setModalProject(project)}
-                      />
-                    </motion.div>
-                  )
-                )
+                searchedProjects.map((project, index) => (
+                  <motion.div
+                    key={`${project.id}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    style={{ minWidth: "260px", flexShrink: 0 }}
+                  >
+                    <ProjectCard
+                      project={{
+                        ...project,
+                        image: project.image || fallbackImage,
+                        video: project.video || fallbackVideo,
+                        brief:
+                          !project.image && !project.video ? "Brevemente" : "",
+                      }}
+                      onClick={() => setModalProject(project)}
+                    />
+                  </motion.div>
+                ))
               )}
             </AnimatePresence>
           </div>
-          <button className="nav right" onClick={scrollRight}>
+          <button
+            className="nav right"
+            onClick={scrollRight}
+            aria-label="Scroll para direita"
+          >
             ›
           </button>
         </div>
