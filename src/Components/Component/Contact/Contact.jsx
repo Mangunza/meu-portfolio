@@ -20,7 +20,7 @@ const Contact = () => {
     setTimeout(() => setModalActive(false), 4000);
   };
 
-  // Fechar by johnnydurao180215@gmail.com
+  // Fechar by johnny durao
   useEffect(() => {
     const handleEsc = (e) => e.key === "Escape" && setModalActive(false);
     window.addEventListener("keydown", handleEsc);

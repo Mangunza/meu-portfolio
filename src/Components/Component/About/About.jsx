@@ -1,5 +1,5 @@
 import React from "react";
-import avatar from "../../../assets/JM.png";
+import avatar from "../../../assets/j-mangunza.jpg";
 import { ABOUT_TEXTS } from "./about.texts";
 import "./Style/about.sass";
 
@@ -12,9 +12,9 @@ const About = () => (
         <div className="col-lg-6 col-md-8 mt-lg-5 text-lg-end">
           <div className="section-title">
             <h5>Sobre</h5>
-            <h1>
+            <h2>
               Sobre <span>mim</span>
-            </h1>
+            </h2>
           </div>
         </div>
       </div>
