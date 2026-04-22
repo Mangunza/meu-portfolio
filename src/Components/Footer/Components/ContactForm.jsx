@@ -14,7 +14,9 @@ export default function ContactForm({ recaptchaRef, showModal }) {
   //  By johnnydurao1802@gmail.com
   const sanitize = (value, max) =>
     DOMPurify.sanitize(
-      String(value || "").trim().slice(0, max),
+      String(value || "")
+        .trim()
+        .slice(0, max),
       { USE_PROFILES: { html: false } }
     );
 
@@ -75,55 +77,88 @@ export default function ContactForm({ recaptchaRef, showModal }) {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
-      <div className="form-group">
-        <label htmlFor="name" className="sr-only">Nome</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Seu Nome"
-          value={form.name}
-          onChange={handleChange}
-          maxLength={MAX_NAME}
-          required
-          autoComplete="name"
-        />
-        <small>{form.name.length}/{MAX_NAME}</small>
-      </div>
+      {/* ========================= */}
+      {/* SEÇÃO: IDENTIFICAÇÃO */}
+      {/* ========================= */}
+      <fieldset>
+        <legend>Identificação</legend>
 
-      <div className="form-group">
-        <label htmlFor="email" className="sr-only">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Seu Email"
-          value={form.email}
-          onChange={handleChange}
-          maxLength={MAX_EMAIL}
-          required
-          autoComplete="email"
-        />
-        <small>{form.email.length}/{MAX_EMAIL}</small>
-      </div>
+        <div className="form-group">
+          <label htmlFor="name" className="sr-only">
+            Nome completo
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Seu Nome"
+            value={form.name}
+            onChange={handleChange}
+            maxLength={MAX_NAME}
+            required
+            autoComplete="name"
+          />
+          <small>
+            {form.name.length}/{MAX_NAME}
+          </small>
+        </div>
 
-      <div className="form-group">
-        <label htmlFor="message" className="sr-only">Mensagem</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Sua Mensagem..."
-          rows={5}
-          value={form.message}
-          onChange={handleChange}
-          maxLength={MAX_MSG}
-          required
-          autoComplete="off"
-        />
-        <small>{form.message.length}/{MAX_MSG}</small>
-      </div>
+        <div className="form-group">
+          <label htmlFor="email" className="sr-only">
+            Endereço de e-mail
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Seu Email"
+            value={form.email}
+            onChange={handleChange}
+            maxLength={MAX_EMAIL}
+            required
+            autoComplete="email"
+          />
+          <small>
+            {form.email.length}/{MAX_EMAIL}
+          </small>
+        </div>
+      </fieldset>
 
-      <button type="submit" disabled={loading}>
+      {/* ========================= */}
+      {/* SEÇÃO: MENSAGEM */}
+      {/* ========================= */}
+      <fieldset>
+        <legend>Mensagem</legend>
+
+        <div className="form-group">
+          <label htmlFor="message" className="sr-only">
+            Mensagem
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Sua Mensagem..."
+            rows={5}
+            value={form.message}
+            onChange={handleChange}
+            maxLength={MAX_MSG}
+            required
+          />
+          <small>
+            {form.message.length}/{MAX_MSG}
+          </small>
+        </div>
+      </fieldset>
+
+      {/* ========================= */}
+      {/* ENVIO */}
+      {/* ========================= */}
+      <button
+        type="submit"
+        className="button-glass"
+        disabled={loading}
+        aria-busy={loading}
+      >
         {loading ? <div className="spinner"></div> : "Enviar Mensagem"}
       </button>
 

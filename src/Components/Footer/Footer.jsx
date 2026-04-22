@@ -3,6 +3,7 @@ import ContactForm from "./Components/ContactForm";
 import ContactCard from "./Components/ContactCard";
 import SocialLinks from "./Components/SocialLinks";
 import "./Style/footer.sass";
+import "./Style/aboutfooter.sass";
 
 const Footer = () => {
   const [modalMessage, setModalMessage] = useState("");
@@ -10,16 +11,25 @@ const Footer = () => {
   const [modalType, setModalType] = useState("success");
   const [infoModalActive, setInfoModalActive] = useState(false);
   const recaptchaRef = useRef(null);
+  const infoModalRef = useRef(null);
+  const modalTimeoutRef = useRef(null);
 
-  // Função para mostrar modal de feedback  johnnydurao1802@gmail.com
+  // Função para mostrar modal de feedback
   const showModal = (msg, type = "success") => {
     setModalMessage(msg);
     setModalType(type);
     setModalActive(true);
-    setTimeout(() => setModalActive(false), 4000);
+
+    if (modalTimeoutRef.current) {
+      clearTimeout(modalTimeoutRef.current);
+    }
+
+    modalTimeoutRef.current = setTimeout(() => {
+      setModalActive(false);
+    }, 4000);
   };
 
-  // Fechar modais com ESC johnnydurao1802@gmail.com
+  // Fechar modais com ESC
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") {
@@ -27,14 +37,27 @@ const Footer = () => {
         setInfoModalActive(false);
       }
     };
+
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
+
+    if (infoModalActive) {
+      document.body.style.overflow = "hidden";
+      infoModalRef.current?.focus();
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "auto";
+    };
+  }, [infoModalActive]);
 
   // Scroll suave para seções do Main
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
-    if (!section) return showModal(`Secção "${id}" não encontrada ❌`, "warning");
+    if (!section)
+      return showModal(`Secção "${id}" não encontrada ❌`, "warning");
     section.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -43,21 +66,33 @@ const Footer = () => {
     { label: "Tecnologias", id: "technologies" },
     { label: "Testemunhos", id: "testimonial" },
     { label: "Faq", id: "faq" },
-    { label: "Blog", id: "blog" }
+    { label: "Blog", id: "blog" },
   ];
 
   return (
     <>
       <footer id="footer" role="contentinfo" aria-label="Footer do Portfólio">
         <div className="footer-inner container">
-          
           {/* Coluna de Contactos */}
           <div className="footer-col">
             <h3>Contactos</h3>
             <ul className="list-unstyled d-flex flex-column gap-3 mt-3">
-              <ContactCard pin type="location" title="Localização" value="Luanda, Angola" />
-              <ContactCard type="phone" title="Telefone" value="+244 934 226 674" />
-              <ContactCard type="email" title="Email" value="johnnydurao180215@gmail.com" />
+              <ContactCard
+                pin
+                type="location"
+                title="Localização"
+                value="Luanda, Angola"
+              />
+              <ContactCard
+                type="phone"
+                title="Telefone"
+                value="+244 934 226 674"
+              />
+              <ContactCard
+                type="email"
+                title="Email"
+                value="johnnydurao180215@gmail.com"
+              />
             </ul>
           </div>
 
@@ -93,7 +128,8 @@ const Footer = () => {
 
         {/* Rodapé inferior */}
         <p className="footer-bottom copy mt-4">
-          © {new Date().getFullYear()} by Johnny Durão Mangunza — Todos os direitos reservados.
+          © {new Date().getFullYear()} by Johnny Durão Mangunza — Todos os
+          direitos reservados.
           <span className="jm-logo">
             JM <span>tech</span>
           </span>
@@ -101,12 +137,16 @@ const Footer = () => {
             className="info-icon"
             role="button"
             aria-label="Informações detalhadas sobre o projeto"
-            onClick={() => setInfoModalActive(true)}
+            aria-haspopup="dialog"
             tabIndex={0}
-            onKeyDown={(e) => e.key === "Enter" && setInfoModalActive(true)}
+            onClick={() => setInfoModalActive(true)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                setInfoModalActive(true);
+              }
+            }}
           >
-            i
-            <span className="tooltip">Mais informações</span>
+            i<span className="tooltip">Mais informações</span>
           </span>
         </p>
         <p className="recaptcha-notice">Protegido por Google reCAPTCHA</p>
@@ -122,28 +162,43 @@ const Footer = () => {
         {modalMessage}
       </div>
 
-      {/* Modal de informações detalhadas johnnydurao1802@gmail.com*/}
+      {/* Modal de informações detalhadas */}
       {infoModalActive && (
         <div
           className="modal-info-overlay"
           onClick={() => setInfoModalActive(false)}
           role="dialog"
           aria-modal="true"
+          aria-labelledby="info-modal-title"
         >
           <div
             className="modal-info-content animate-modal"
+            ref={infoModalRef}
+            tabIndex="-1"
             onClick={(e) => e.stopPropagation()}
           >
-            <h4>Sobre o Projeto</h4>
+            <h4 id="info-modal-title">Sobre o Projeto</h4>
+
             <p>
-              Foi desenvolvido como demonstração das minhas competências em desenvolvimento fullstack, incluindo integração de formulários dinâmicos via serviços como EmailJS.
+              Este projeto foi desenvolvido como demonstração das minhas
+              competências em desenvolvimento Fullstack, incluindo integração de
+              formulários dinâmicos via EmailJS.
               <br />
-              As mensagens enviadas através do formulário são entregues diretamente ao meu e-mail pessoal de forma segura. Nenhum dado é armazenado permanentemente: informações temporárias expiram automaticamente após envio.
               <br />
-              O design segue padrões modernos de UI/UX com tema Escuro Verde Mancha, animações sutis em verde e acessibilidade, garantindo uma experiência elegante.
+              As mensagens enviadas são entregues diretamente ao meu e-mail
+              pessoal de forma segura. Nenhum dado é armazenado permanentemente
+              — informações temporárias expiram automaticamente após o envio.
               <br />
-              <strong>Políticas de uso:</strong> Este portfolio destina-se apenas a fins de demonstração e análise de habilidades. Todos os dados enviados pelo formulário serão tratados com confidencialidade protegida pela Google reCAPTCHA e não serão utilizados para qualquer outro propósito.
+              <br />
+              O design segue padrões modernos de UI/UX com tema Escuro Verde
+              Mancha, animações sutis e princípios de acessibilidade.
+              <br />
+              <br />
+              <strong>Políticas de uso:</strong> Este portfólio destina-se
+              apenas a fins de demonstração. Todos os dados enviados são
+              tratados com confidencialidade e protegidos via Google reCAPTCHA.
             </p>
+
             <button
               className="modal-close-btn"
               onClick={() => setInfoModalActive(false)}
