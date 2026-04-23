@@ -19,7 +19,7 @@ import "./Component/Style/projectpage.sass";
 import btnArrow from "./../../../assets/about-more-circle.svg";
 import { PROJECTS_DATA } from "./projectspage.data";
 
-// By johnnydurao1802@gmail.com
+// By johnnydurao
 const debounce = (fn, delay = 300) => {
   let timer;
   return (...args) => {
@@ -113,7 +113,7 @@ const ProjectsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Projetos | Portfólio Premium</title>
+        <title>Projectos | JM Tech</title>
         <meta
           name="description"
           content="Projetos profissionais em desenvolvimento web e mobile."

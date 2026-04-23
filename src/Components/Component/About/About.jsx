@@ -2,11 +2,14 @@ import React from "react";
 import avatar from "../../../assets/j-mangunza.jpg";
 import { ABOUT_TEXTS } from "./about.texts";
 import "./Style/about.sass";
+import { Helmet } from "react-helmet";
 
 const About = () => (
   <section className="about-section" id="sobremim">
-
     {/* johnnydurao1802@gmail.com */}
+    <Helmet>
+      <title>Inicio | JM Tech</title>
+    </Helmet>
     <div className="container">
       <div className="row justify-content-end">
         <div className="col-lg-6 col-md-8 mt-lg-5 text-lg-end">
@@ -21,7 +24,6 @@ const About = () => (
     </div>
 
     <div className="about-wrapper">
-      
       <div className="col-image">
         <figure className="about-image-box">
           <img
@@ -30,9 +32,7 @@ const About = () => (
             className="about-image"
             loading="lazy"
           />
-          <figcaption className="image-caption">
-            Fullstack Developer
-          </figcaption>
+          <figcaption className="image-caption">Fullstack Developer</figcaption>
         </figure>
       </div>
 
