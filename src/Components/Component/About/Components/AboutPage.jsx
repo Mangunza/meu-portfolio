@@ -2,15 +2,19 @@ import React from "react";
 
 import Header from "../../../Header/Header";
 
-import avatar from "../../../../assets/JM.png";
+import avatar from "../../../../assets/j-mangunza.jpg";
 import btnArrow from "./../../../../assets/about-more-circle.svg";
 
 import { TIMELINE, SOFT_SKILLS } from "./aboutpage.data";
 import "./Style/aboutpage.sass";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AboutPage = () => (
   <>
+    <Helmet>
+      <title>Portfólio | JM Tech</title>
+    </Helmet>
     <Header />
     <main className="about-page">
       <header className="projects-header">

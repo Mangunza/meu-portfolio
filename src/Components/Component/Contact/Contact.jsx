@@ -6,6 +6,7 @@ import { FaLinkedin, FaGithub, FaDiscord } from "react-icons/fa";
 
 import logo from "../../../../src/assets/JM_tech-logo.png";
 import "./contact.sass";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const recaptchaRef = useRef(null);
@@ -29,6 +30,9 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contactos | JM Tech</title>
+      </Helmet>
       <Header />
       <main className="contact-page">
         <section className="contact-intro">
