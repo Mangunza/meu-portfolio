@@ -1,48 +1,8 @@
 @use "./../../../style/variables"
-@use "./../../../style/mixins"
-
-.about-section
-  width: 100%
-  padding: 5rem 2rem 4rem
-  position: relative
-  display: flex
-  justify-content: center
-  align-items: center
-  color: variables.$color-white
-  overflow: hidden
-
-  .about-wrapper
-    display: flex
-    flex-wrap: wrap
-    align-items: center
-    justify-content: center
-    gap: 2.5rem
-    max-width: 1200px
-    margin: 0 auto
-
-  .col-text
-    flex: 2 1 420px
-    max-width: 720px
-
-  .bio-paragraph
-    text-align: justify
-    margin-bottom: 1.3rem
-    line-height: 1.8
-    color: variables.$text-primary
-    font-family: variables.$font-primary
-    opacity: 0
-    transform: translateY(14px)
-    animation: paragraphFadeIn 0.7s ease forwards
-    animation-delay: var(--delay, 0s)
-
-@keyframes paragraphFadeIn
-  to
-    opacity: 1
-    transform: translateY(0)
 
 /* ================================
    Info Icon + Tooltip
- ================================ */
+  ================================ */
 .info-icon
   position: relative
   display: inline-flex
@@ -85,8 +45,8 @@
   transform: translateX(-50%) translateY(0)
 
 /* ================================
-   Modal Footer
- ================================ */
+   Modal Info
+  ================================ */
 .modal-info-overlay
   position: fixed
   inset: 0
