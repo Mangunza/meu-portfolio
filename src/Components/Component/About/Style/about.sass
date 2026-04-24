@@ -1,15 +1,21 @@
 @use './../../../../style/variables' as vars
 @use './../../../../style/mixins'
 
+/* ================================
+   ABOUT SECTION
+  ================================ */
 .about-section
   width: 100%
-  padding: clamp(3rem, 4vw, 5rem) clamp(2rem, 4vw, 5rem) 0
+  padding: clamp(3rem, 4vw, 5rem) clamp(2rem, 4vw, 5rem) 2rem
   color: vars.$color-white
   background: #000
   overflow: hidden
   position: relative
   box-sizing: border-box
 
+  /* ================================
+     TITLE
+    ================================= */
   .section-title
     margin-bottom: clamp(2rem, 4vw, 3rem)
 
@@ -22,7 +28,7 @@
       margin-bottom: 0.4rem
       color: vars.$text-secondary
 
-    h1
+    h2
       font-size: clamp(2.2rem, 4.8vw, 3.1rem)
       font-weight: 420
       line-height: 1.12
@@ -30,21 +36,28 @@
       font-family: "Plus Jakarta Sans", sans-serif
       margin: 0
       color: #fff
+
       span
         color: vars.$neon
         font-weight: 700
 
+  /* ================================
+     WRAPPER
+    ================================= */
   .about-wrapper
     display: flex
     align-items: center
     justify-content: center
-    gap: clamp(1rem, 1.8vw, 2rem)
+    gap: clamp(1rem, 2vw, 2.5rem)
     width: 100%
     max-width: 1200px
     margin: 0 auto
     z-index: 2
     box-sizing: border-box
 
+    /* ================================
+       IMAGE COLUMN
+      ================================= */
     .col-image
       flex: 0 0 clamp(180px, 22vw, 280px)
       display: flex
@@ -54,6 +67,11 @@
       border-radius: 20px
       box-shadow: 0 18px 40px rgba(0,0,0,.75)
       padding: 1rem
+
+      .about-image-box
+        display: flex
+        flex-direction: column
+        align-items: center
 
       .about-image
         width: 100%
@@ -70,6 +88,9 @@
         opacity: .8
         text-align: center
 
+    /* ================================
+       TEXT COLUMN
+      ================================= */
     .col-text
       flex: 1
       max-width: 650px
@@ -79,12 +100,11 @@
       padding: clamp(1.5rem, 2vw, 2.2rem)
       text-align: center
 
-      .bio-title
-        font-size: clamp(1.5rem, 2.2vw, 2rem)
-        font-weight: 700
-        margin-bottom: .9rem
-        letter-spacing: 1px
-        animation: floatTitle 5s ease-in-out infinite
+      .bio-section
+        width: 100%
+
+      .bio-content
+        width: 100%
 
       .bio-paragraph
         font-size: clamp(1rem, 1.35vw, 1.1rem)
@@ -92,13 +112,33 @@
         letter-spacing: .3px
         word-spacing: .2em
         text-align: justify
-        opacity: .95
+        margin-bottom: 1.2rem
+        color: vars.$text-primary
+        font-family: vars.$font-primary
 
+        /* animação controlada */
+        opacity: 0
+        transform: translateY(14px)
+        animation: paragraphFadeIn 0.7s ease forwards
+        animation-delay: var(--delay, 0s)
+
+  /* ================================
+     PARTICLES BACKGROUND
+    ================================= */
   .particles-canvas
     position: absolute
     inset: 0
     z-index: 0
     pointer-events: none
+
+
+/* ================================
+   ANIMAÇÕES
+  ================================ */
+@keyframes paragraphFadeIn
+  to
+    opacity: 1
+    transform: translateY(0)
 
 @keyframes floatTitle
   0%, 100%
@@ -115,24 +155,29 @@
     transform: scale(1)
 
 
-// ================= by johnnydurao180215@gmail.com =================
+/* ================================
+   RESPONSIVIDADE
+  ================================ */
 @media (max-width: 992px)
-  .about-wrapper
-    flex-direction: column-reverse
-    gap: 1.5rem
+  .about-section
 
-  .col-text
-    max-width: 90%
+    .about-wrapper
+      flex-direction: column-reverse
+      gap: 1.5rem
+
+    .col-text
+      max-width: 90%
 
 @media (max-width: 576px)
   .about-section
     padding: 3rem 1rem 1rem
 
-  .about-wrapper
-    gap: 1rem
+    .about-wrapper
+      gap: 1rem
 
-  .about-image
-    max-width: 160px
+      .col-image
+        .about-image
+          max-width: 160px
 
-  .bio-paragraph
-    line-height: 1.75
+    .bio-paragraph
+      line-height: 1.75
