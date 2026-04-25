@@ -20,7 +20,7 @@ const ProjectsPage = lazyLoad(() =>
 );
 
 function App() {
-  const basename = "/meu-portfolio";
+  const basename = import.meta.env.BASE_URL;
 
   return (
     <HelmetProvider>
